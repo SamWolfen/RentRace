@@ -240,7 +240,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GatherCoins.cs" />
+    <Compile Include="Assets\PullScore.cs" />
+    <Compile Include="Assets\ScoreHolder.cs" />
+    <Compile Include="Assets\Scripts\GatherCoins.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\SimpleInput\Credits.txt" />
