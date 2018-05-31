@@ -40,7 +40,7 @@ public class ExamplePlayerController : MonoBehaviour
         { direction = 4; };
         if (inputHorizontal == inputVertical)
         {
-            //direction = 0;
+            direction = 0;
         }
 
         //1 = right 2 = left 3 = up 4 = down
