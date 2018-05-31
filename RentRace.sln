@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentRace.Plugins", "RentRace.Plugins.csproj", "{9847B4F9-EC6C-7581-08A9-0D60385D2817}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentRace", "RentRace.csproj", "{F9D09908-CABD-F69F-8027-ED67729A8256}"
