@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreHolder : MonoBehaviour {
-
-    public GameObject TotalScore;
-    public GameObject CashInHand;
-    public GameObject BankDisplay;
-
     public int Score = 0;
     public int Cash = 0;
     public int Bank = 0;
@@ -24,12 +19,26 @@ public class ScoreHolder : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Score = Cash + Bank;
+        //Score = Cash + Bank;
 
     }
 
-    public void OnColliderEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Debug.Log(collision.name);
+        if (collision.tag == "Coin")
+        {
+            CoinGet(this);
+            //Probably not efficient to destroy, but can replace with pool later
+            DestroyObject(GameObject.Find(collision.name));
+        }
+
+    }
+
+    public void CoinGet(ScoreHolder scoreHolder)
+    {
+        //increases score
+        scoreHolder.Cash = scoreHolder.Cash + 10;
+        scoreHolder.Score = scoreHolder.Cash + scoreHolder.Bank;
     }
 }

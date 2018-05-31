@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616737979773124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.4744787, y: -6.9215984, z: 6.9546056}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   CashInHand: {fileID: 0}
   BankDisplay: {fileID: 0}
   Score: 0
-  Cash: 0
+  Cash: 60
   Bank: 0
 --- !u!212 &212115096509647232
 SpriteRenderer:

@@ -11,15 +11,12 @@ public class GatherCoins : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Debug.Log("colissions");
-
         if (collision.name == "Player")
         {
-            scores = Player.GetComponent<ScoreHolder>();
-            scores.Cash = scores.Cash + 10;
-            
-            Destroy(gameObject);
+           //Debug.Log("colissions");
+
+            //scores.CoinGet(scores);            
+            //Destroy(gameObject);
         }
     }
 }
