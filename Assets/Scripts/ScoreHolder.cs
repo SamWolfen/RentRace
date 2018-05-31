@@ -12,7 +12,9 @@ public class ScoreHolder : MonoBehaviour {
     private float progressTimer = 0;
     private string enteredBuilding = null;
     private IEnumerator coroutine;
-
+    private GameObject ProgressBar;
+    private GameObject ProgressBarGreen;
+    private GameObject ProgressBarGrey;
 
     // Use this for initialization
 
@@ -83,21 +85,24 @@ public class ScoreHolder : MonoBehaviour {
         bool actionComplete = false;
         float Progress = 0;
         float requiredProgress = 0;
+        float progressBar = 0;
+        float progressModifier = 200;
+        
 
         switch (building)
         {
             case "Bank":
                 requiredProgress = Cash;
                 break;
-              
         }
 
         while (actionComplete == false)
         {
-
+            yield return new WaitForSecondsRealtime(1f);
 
             //action
-            Progress = Progress + Time.deltaTime * 10;
+            Progress = Progress + Time.deltaTime * progressModifier;
+            progressBar = Progress / requiredProgress;
             Debug.Log(Progress);
             //test if action is complete
             if (Progress >= requiredProgress)
@@ -111,6 +116,6 @@ public class ScoreHolder : MonoBehaviour {
 
         }
 
-        return null; 
+        yield return null; 
     }
 }
