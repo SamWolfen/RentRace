@@ -1,1 +1,7 @@
 # RentRace
+# RentRace Design Overview
+A Pacman-inspired game with Incremental game elements.
+# Pitch
+RentRace is spin on an arcade classic for mobile platforms, introducing new elements of resource and property management to the game. You play as an Investor, building up capital and then investing in property. As you navigate the level collecting coins, you will need to avoid hazards until you can safely purchase property, after which you can collect Rent from the Tenants and maintain the property to keep the Tenants happy.
+# Overview
+The Game is set in modern times, portrayed with colourful pixel graphics from a bird’s eye perspective. As of yet, we are not sure what should represent the properties (Divisions of REA Group, suburbs?). The game’s basic early elements will play a lot like Pacman, with the player navigating a maze and collecting Points/Money while avoiding hazards. If the player collides with a hazard then they will drop the money that they are carrying. The player can safely store their money in 2 ways: Storing it in the bank, or by purchasing property. By purchasing property, the player will gain an extra source of income, which will spawn over time around the property and require the player or an Agent to pick it up. If the property is left unattended for too long then it can become damaged or may attract vandals, which decrease the income dropped and might even scare away your tenant. To help manage property, the player can hire an agent, who for a small fee will help manage your investments for a short period of time.
