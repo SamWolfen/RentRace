@@ -1102,8 +1102,8 @@ Transform:
   - {fileID: 1004181474}
   - {fileID: 828263651}
   - {fileID: 978307516}
-  - {fileID: 403018717}
   - {fileID: 1433388210}
+  - {fileID: 403018717}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1230,7 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137042477}
   - component: {fileID: 1137042478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: InteractiveArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,11 +1244,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1137042476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.03, y: -0.28, z: 0}
+  m_LocalScale: {x: 1.8356293, y: 1.8356299, z: 1.8356299}
   m_Children: []
   m_Father: {fileID: 1730530319}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1137042478
 SpriteRenderer:
@@ -1284,15 +1284,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5f35e035017d8a04ab3475579ba6de02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!1001 &1228518976
 Prefab:
@@ -1303,11 +1303,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4480255826702220, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.4744787
+      value: 2.18
       objectReference: {fileID: 0}
     - target: {fileID: 4480255826702220, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6.9215984
+      value: -11.02
       objectReference: {fileID: 0}
     - target: {fileID: 4480255826702220, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1331,7 +1331,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4480255826702220, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114784783302706352, guid: afbe23b2d44b2484ba37cc37c2ff3107,
         type: 2}
@@ -1348,6 +1348,11 @@ Prefab:
       propertyPath: BankDisplay
       value: 
       objectReference: {fileID: 147781348}
+    - target: {fileID: 212115096509647232, guid: afbe23b2d44b2484ba37cc37c2ff3107,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
   m_IsPrefabParent: 0
@@ -1391,7 +1396,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1433388210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Buildings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1415,7 @@ Transform:
   m_Children:
   - {fileID: 1730530319}
   m_Father: {fileID: 946485534}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1481660445
 Prefab:
@@ -1463,7 +1468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1494693929}
   - component: {fileID: 1494693930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BankSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1730530319}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1494693930
 SpriteRenderer:
@@ -1516,7 +1521,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3eae8ab7a99342341b4a1c406acff950, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1627,7 +1632,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1730530319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1641,11 +1646,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1730530318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.25, y: -3.71, z: 0}
+  m_LocalPosition: {x: 3.89, y: -3.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1137042477}
   - {fileID: 1494693929}
+  - {fileID: 1137042477}
   m_Father: {fileID: 1433388210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
