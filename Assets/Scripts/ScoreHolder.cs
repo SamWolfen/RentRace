@@ -6,6 +6,7 @@ public class ScoreHolder : MonoBehaviour {
     public int Score = 0;
     public int Cash = 0;
     public int Bank = 0;
+
     private float generalTimer = 0;
     private float generalCounter = 0;
     private float interestTimer = 0;
