@@ -1,4 +1,3 @@
-# RentRace
 # RentRace Design Overview
 A Pacman-inspired game with Incremental game elements.
 # Pitch
