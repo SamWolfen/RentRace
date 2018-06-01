@@ -6,6 +6,8 @@ public class PropertyProperties : MonoBehaviour {
     public float Price;
     public float spawnRate;
     public float spawnAmount;
+    public GameObject Property;
+    public GameObject CoinSpawnerObject;
     private bool runRentGen;
 
 	// Use this for initialization
@@ -35,6 +37,7 @@ public class PropertyProperties : MonoBehaviour {
             yield return new WaitForSecondsRealtime(10.0f);
 
             Debug.Log(this.name + " attempted to spawn coins");
+            CoinSpawnerObject.GetComponent<CoinSpawner>().CoinSpawn(transform.position, Property);
 
             //spawn coins
 

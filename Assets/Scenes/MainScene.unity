@@ -336,6 +336,8 @@ MonoBehaviour:
   Price: 30
   spawnRate: 1
   spawnAmount: 1
+  Property: {fileID: 159087603}
+  CoinSpawnerObject: {fileID: 828263650}
 --- !u!58 &159087606
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -450,6 +452,31 @@ GameObject:
   m_PrefabParentObject: {fileID: 1972323683297088, guid: f138314731cd7f6428d17ec71fa169b0,
     type: 2}
   m_PrefabInternal: {fileID: 1481660445}
+--- !u!61 &271636694
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 271636693}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
 --- !u!1 &343105367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1375,11 @@ Prefab:
       propertyPath: PropertyOne
       value: 
       objectReference: {fileID: 159087603}
+    - target: {fileID: 212115096509647232, guid: afbe23b2d44b2484ba37cc37c2ff3107,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
   m_IsPrefabParent: 0
@@ -1451,6 +1483,26 @@ Prefab:
     - target: {fileID: 4133018824735542, guid: f138314731cd7f6428d17ec71fa169b0, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50043194130162888, guid: f138314731cd7f6428d17ec71fa169b0,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50043194130162888, guid: f138314731cd7f6428d17ec71fa169b0,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212767840431639566, guid: f138314731cd7f6428d17ec71fa169b0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50043194130162888, guid: f138314731cd7f6428d17ec71fa169b0,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f138314731cd7f6428d17ec71fa169b0, type: 2}

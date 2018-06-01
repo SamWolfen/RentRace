@@ -48,6 +48,9 @@ public class CoinSpawner : MonoBehaviour
     public void CoinSpawn(Vector3 Coords, GameObject Caller)
     {
         Vector3 spawnPoint = emptyVec;
+        Vector2 velocity = new Vector2 (0,0);
+        float x;
+        float y;
         
 
         bool pointOccupied = true;
@@ -59,8 +62,8 @@ public class CoinSpawner : MonoBehaviour
             {
                 case "CoinSpawner":
 
-                    float x = Random.Range(-4.7f, 4.7f);
-                    float y = Random.Range(-4.7f, 4.7f);
+                    x = Random.Range(-4.7f, 4.7f);
+                    y = Random.Range(-4.7f, 4.7f);
 
 
                     spawnPoint = new Vector3(x, y, 7f);
@@ -70,6 +73,10 @@ public class CoinSpawner : MonoBehaviour
                 case "Purchased":
 
                     spawnPoint = Coords;
+
+                    x = Random.Range(-2f, 2f);
+                    y = Random.Range(-2f, 2f);
+                    velocity = new Vector2(x, y);
 
                     break;
 
@@ -91,6 +98,7 @@ public class CoinSpawner : MonoBehaviour
 
             Coins[i].SetActive(true);
             Coins[i].transform.position = spawnPoint;
+            Coins[i].GetComponent<Rigidbody2D>().velocity = velocity;
         }
 
 
