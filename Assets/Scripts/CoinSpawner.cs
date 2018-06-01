@@ -82,7 +82,7 @@ public class CoinSpawner : MonoBehaviour
 
             }
 
-            pointOccupied = false; //IsPointOccupied(spawnPoint);
+            pointOccupied = IsPointOccupied(spawnPoint);
 
             //gameObject.activeSelf
 
@@ -108,7 +108,7 @@ public class CoinSpawner : MonoBehaviour
 
     public bool IsPointOccupied(Vector3 point)
     {
-        var hitColliders = Physics2D.CircleCast(point, 2, new Vector2(0, 0));
+        var hitColliders = Physics2D.CircleCast(point, 0.1f, new Vector2(0, 0));
         if (hitColliders.collider)
         {
             return true;
