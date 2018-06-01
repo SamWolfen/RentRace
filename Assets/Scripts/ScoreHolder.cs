@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreHolder : MonoBehaviour {
     public int Score = 0;
@@ -13,9 +14,13 @@ public class ScoreHolder : MonoBehaviour {
     private float progressTimer = 0;
     private string enteredBuilding = null;
     private IEnumerator coroutine;
-    private GameObject ProgressBar;
-    private GameObject ProgressBarGreen;
-    private GameObject ProgressBarGrey;
+
+    public GameObject ProgressBar;
+    public GameObject ProgressBarGreen;
+    public GameObject ProgressBarGrey;
+    private GameObject CollidedObject;
+
+    public bool Interacting;
 
     // Use this for initialization
 
@@ -37,31 +42,42 @@ public class ScoreHolder : MonoBehaviour {
     {
         Debug.Log(collision.name);
         progressTimer = 0;
-        
+        CollidedObject = GameObject.Find(collision.name);
+        bool valid = false;
+
         switch (collision.tag)
         {
             case "Coin":
                 CoinGet(this);
                 //Probably not efficient to destroy, but can replace with pool later
-                DestroyObject(GameObject.Find(collision.name));
+                CollidedObject.SetActive(false);
                 break;
 
             case "Bank":
                 //deposit money at a rate
-                coroutine = BuildingAction("Bank");
-                
+                if (Cash > 0)
+                {
+                    coroutine = BuildingAction("Bank");
+                    valid = true;
+                }
                 break;
 
         }
 
-        if (collision.tag != "Coin")
+        if (collision.tag != "Coin" && valid == true)
         {
+            Interacting = true;
             StartCoroutine(coroutine);
         }
 
     }
 
-    
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Interacting = false;
+    }
+
+
     public void CoinGet(ScoreHolder scoreHolder)
     {
         //increases score
@@ -88,6 +104,12 @@ public class ScoreHolder : MonoBehaviour {
         float requiredProgress = 0;
         float progressBar = 0;
         float progressModifier = 200;
+        float distanceX = ProgressBarGreen.transform.localPosition.x - ProgressBarGrey.transform.localPosition.x;
+
+        Vector3 initialPosGreen = ProgressBarGreen.transform.localPosition;
+
+        ProgressBar.SetActive(true);
+        ProgressBarGreen.transform.localScale = new Vector3(0.1f,ProgressBarGreen.transform.localScale.y);
         
 
         switch (building)
@@ -99,20 +121,37 @@ public class ScoreHolder : MonoBehaviour {
 
         while (actionComplete == false)
         {
-            yield return new WaitForSecondsRealtime(1f);
-
-            //action
-            Progress = Progress + Time.deltaTime * progressModifier;
-            progressBar = Progress / requiredProgress;
-            Debug.Log(Progress);
-            //test if action is complete
-            if (Progress >= requiredProgress)
+            yield return new WaitForSecondsRealtime(0.1f);
+            if (Interacting == true)
             {
-                Invest(building);
+
+                //action
+                Progress = Progress + Time.deltaTime * progressModifier;
+                progressModifier++;
+                progressBar = Progress / requiredProgress;
+                Debug.Log(progressBar * 100);
+
+                ProgressBarGreen.transform.localScale = new Vector3(progressBar * ProgressBarGrey.transform.localScale.x, ProgressBarGreen.transform.localScale.y);
+                ProgressBarGreen.transform.localPosition = new Vector3(initialPosGreen.x - (distanceX * progressBar), ProgressBarGreen.transform.localPosition.y);
+
+                //test if action is complete
+                if (Progress >= requiredProgress)
+                {
+                    //complete action reset loading bar
+                    Invest(building);
+                    ProgressBar.SetActive(false);
+                    ProgressBarGreen.transform.localPosition = initialPosGreen;
+
+                    actionComplete = true;
+                };
+
+            }
+            else
+            {
+                ProgressBar.SetActive(false);
+                ProgressBarGreen.transform.localPosition = initialPosGreen;
                 actionComplete = true;
-            };
-
-
+            }
 
 
         }
