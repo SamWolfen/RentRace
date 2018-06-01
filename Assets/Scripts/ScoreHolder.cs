@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//this script manages resource gathering and resource expenditure.
+//this script manages object interaction, resource gathering and resource expenditure.
 
-public class ScoreHolder : MonoBehaviour {
+public class ScoreHolder : MonoBehaviour
+{
     public float Score = 0;
     public float Cash = 0;
     public float Bank = 0;
+    private float Price = 0;
 
     private float generalTimer = 0;
     private float generalCounter = 0;
     private float interestTimer = 0;
     private float progressTimer = 0;
-   
+
+
     private IEnumerator buildingCoroutine;
 
     public GameObject ProgressBar;
@@ -27,17 +30,19 @@ public class ScoreHolder : MonoBehaviour {
 
     // Use this for initialization
 
-    void Start () {
+    void Start()
+    {
         Score = 0;
         Cash = 0;
         Bank = 0;
 
         StartCoroutine(BankInterest());
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         //Score = Cash + Bank;
 
     }
@@ -49,10 +54,12 @@ public class ScoreHolder : MonoBehaviour {
         CollidedObject = GameObject.Find(collision.name);
         bool valid = false;
 
+        //check what we've hit and then call the relavent function
+
         switch (collision.tag)
         {
             case "Coin":
-                CoinGet(this);
+                CoinGet();
                 //Probably not efficient to destroy, but can replace with pool later
                 CollidedObject.SetActive(false);
                 break;
@@ -61,17 +68,33 @@ public class ScoreHolder : MonoBehaviour {
                 //deposit money at a rate
                 if (Cash > 0)
                 {
-                    buildingCoroutine = BuildingAction("Bank");
+                    valid = true;
+                }
+                break;
+
+            case "Property":
+                //purchase property
+
+                switch (collision.name)
+                {
+                    case "Property1":
+                        //Price = propPriceOne;
+                        break;
+                }
+
+
+                if (Score >= Price)
+                {
                     valid = true;
                 }
                 break;
 
         }
-
+        //carries out building action
         if (collision.tag != "Coin" && valid == true)
         {
             Interacting = true;
-            StartCoroutine(buildingCoroutine);
+            StartCoroutine(BuildingAction(collision.tag));
         }
 
     }
@@ -82,47 +105,92 @@ public class ScoreHolder : MonoBehaviour {
     }
 
 
-    public void CoinGet(ScoreHolder scoreHolder)
+    public void CoinGet()
     {
         //increases score
-        scoreHolder.Cash = scoreHolder.Cash + 10;
-        scoreHolder.Score = scoreHolder.Cash + scoreHolder.Bank;
+        Cash = Cash + 10;
+        Score = Cash + Bank;
     }
 
     private void Invest(string BuildingType)
     {
+        //Carries out investment action
+
         switch (BuildingType)
         {
             case "Bank":
                 Bank += Cash;
                 Cash = 0;
                 Score = Cash + Bank;
-            break;
+                break;
+
+            case "Property":
+                //purchases property
+                if (Score >= Price)
+                {
+                    if (Price > Cash)
+                    {
+                        Price += Price - Cash;
+                    }
+                    else
+                    {
+                        Cash -= Price;
+                        Price = 0;
+                    }
+                    
+                    if (Price > 0)
+                    {
+                        Bank -= Price;
+                    }
+
+                    //update values
+                    Score = Cash + Bank;
+                    CollidedObject.tag = "Purchased";
+                }
+                else
+                {
+                    Debug.Log("Cannot afford action, Called incorrectly?");
+                }
+
+                
+                break;
         }
     }
 
     private IEnumerator BuildingAction(string building)
     {
+        //progress bar setup
         bool actionComplete = false;
         float Progress = 0;
         float requiredProgress = 0;
         float progressBar = 0;
         float progressModifier = 200;
         float distanceX = ProgressBarGreen.transform.localPosition.x - ProgressBarGrey.transform.localPosition.x;
-
         Vector3 initialPosGreen = ProgressBarGreen.transform.localPosition;
-
         ProgressBar.SetActive(true);
-        ProgressBarGreen.transform.localScale = new Vector3(0.1f,ProgressBarGreen.transform.localScale.y);
-        
+        ProgressBarGreen.transform.localScale = new Vector3(0.1f, ProgressBarGreen.transform.localScale.y);
 
+        //determines type of action and parameters
         switch (building)
         {
             case "Bank":
                 requiredProgress = Cash;
                 break;
+
+            case "Property":
+                requiredProgress = Price;
+                break;
+
+            case "":
+
+                break;
+
+            case "Repair":
+                //requiredProgress = Damage;
+                break;
         }
 
+        //create loop to start progress
         while (actionComplete == false)
         {
             yield return new WaitForSecondsRealtime(0.1f);
@@ -141,7 +209,7 @@ public class ScoreHolder : MonoBehaviour {
                 //test if action is complete
                 if (Progress >= requiredProgress)
                 {
-                    //complete action reset loading bar
+                    //complete action, reset loading bar
                     Invest(building);
                     ProgressBar.SetActive(false);
                     ProgressBarGreen.transform.localPosition = initialPosGreen;
@@ -152,6 +220,7 @@ public class ScoreHolder : MonoBehaviour {
             }
             else
             {
+                //resets if interaction is canceled
                 ProgressBar.SetActive(false);
                 ProgressBarGreen.transform.localPosition = initialPosGreen;
                 actionComplete = true;
@@ -160,11 +229,12 @@ public class ScoreHolder : MonoBehaviour {
 
         }
 
-        yield return null; 
+        yield return null;
     }
 
     private IEnumerator BankInterest()
     {
+        //increases bank value relative to bank value
         bool coroutineRun = true;
 
         while (coroutineRun)
@@ -172,7 +242,8 @@ public class ScoreHolder : MonoBehaviour {
             yield return new WaitForSecondsRealtime(5f);
 
             Bank = Bank + (Bank * 0.01f);
-            Bank =  (float)Math.Round(Bank, 2);
+            Bank = (float)Math.Round(Bank, 2);
+            Score = Cash + Bank;
 
 
         }
