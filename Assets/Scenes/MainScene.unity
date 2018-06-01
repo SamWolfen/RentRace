@@ -756,13 +756,13 @@ GameObject:
   - component: {fileID: 828263652}
   m_Layer: 8
   m_Name: CoinSpawnerObject
-  m_TagString: Untagged
+  m_TagString: CoinSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &828263651
-Transform:
+--- !u!224 &828263651
+RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -775,6 +775,11 @@ Transform:
   m_Father: {fileID: 946485534}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1.3342, y: -6.994}
+  m_SizeDelta: {x: 9.8743, y: 9.444}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828263652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,7 +1341,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4480255826702220, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114784783302706352, guid: afbe23b2d44b2484ba37cc37c2ff3107,
         type: 2}
@@ -1417,11 +1422,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4133018824735542, guid: f138314731cd7f6428d17ec71fa169b0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.48
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4133018824735542, guid: f138314731cd7f6428d17ec71fa169b0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7.02
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4133018824735542, guid: f138314731cd7f6428d17ec71fa169b0, type: 2}
       propertyPath: m_LocalPosition.z

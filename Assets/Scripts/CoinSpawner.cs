@@ -33,7 +33,6 @@ public class CoinSpawner : MonoBehaviour
 
         while (i < 30)
         {
-            Coins[i].SetActive(true);
             CoinSpawn(emptyVec, CoinSpawnerObject);
             i++;
         }
@@ -49,19 +48,20 @@ public class CoinSpawner : MonoBehaviour
     public void CoinSpawn(Vector3 Coords, GameObject Caller)
     {
         Vector3 spawnPoint = emptyVec;
-        System.Random rnd = new System.Random();
+        
+
         bool pointOccupied = true;
 
-        while (pointOccupied != false)
+        while (pointOccupied == true)
         {
             //check if the spawnpoint is clear, if not, reroll
             switch (Caller.tag)
             {
                 case "CoinSpawner":
 
-                    float x = rnd.Next(1, 1);
-                    float y = rnd.Next(1, 1);
-                    
+                    float x = Random.Range(-4.7f, 4.7f);
+                    float y = Random.Range(-4.7f, 4.7f);
+
 
                     spawnPoint = new Vector3(x, y, 7f);
 
@@ -75,7 +75,7 @@ public class CoinSpawner : MonoBehaviour
 
             }
 
-            pointOccupied = IsPointOccupied(spawnPoint);
+            pointOccupied = false; //IsPointOccupied(spawnPoint);
 
             //gameObject.activeSelf
 
@@ -89,9 +89,8 @@ public class CoinSpawner : MonoBehaviour
                 i++;
             }
 
+            Coins[i].SetActive(true);
             Coins[i].transform.position = spawnPoint;
-
-
         }
 
 

@@ -53,7 +53,7 @@ public class ScoreHolder : MonoBehaviour
     {
         Debug.Log(collision.name);
         progressTimer = 0;
-        CollidedObject = GameObject.Find(collision.name);
+        CollidedObject = collision.gameObject;
         bool valid = false;
 
         //check what we've hit and then call the relavent function

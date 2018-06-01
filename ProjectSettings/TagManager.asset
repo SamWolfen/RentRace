@@ -9,6 +9,7 @@ TagManager:
   - Bank
   - Property
   - Purchased
+  - CoinSpawner
   layers:
   - Default
   - TransparentFX
