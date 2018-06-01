@@ -1,19 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//this script manages resource gathering and resource expenditure.
+
 public class ScoreHolder : MonoBehaviour {
-    public int Score = 0;
-    public int Cash = 0;
-    public int Bank = 0;
+    public float Score = 0;
+    public float Cash = 0;
+    public float Bank = 0;
 
     private float generalTimer = 0;
     private float generalCounter = 0;
     private float interestTimer = 0;
     private float progressTimer = 0;
-    private string enteredBuilding = null;
-    private IEnumerator coroutine;
+   
+    private IEnumerator buildingCoroutine;
 
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
@@ -28,7 +31,8 @@ public class ScoreHolder : MonoBehaviour {
         Score = 0;
         Cash = 0;
         Bank = 0;
-        
+
+        StartCoroutine(BankInterest());
 		
 	}
 	
@@ -57,7 +61,7 @@ public class ScoreHolder : MonoBehaviour {
                 //deposit money at a rate
                 if (Cash > 0)
                 {
-                    coroutine = BuildingAction("Bank");
+                    buildingCoroutine = BuildingAction("Bank");
                     valid = true;
                 }
                 break;
@@ -67,7 +71,7 @@ public class ScoreHolder : MonoBehaviour {
         if (collision.tag != "Coin" && valid == true)
         {
             Interacting = true;
-            StartCoroutine(coroutine);
+            StartCoroutine(buildingCoroutine);
         }
 
     }
@@ -157,5 +161,20 @@ public class ScoreHolder : MonoBehaviour {
         }
 
         yield return null; 
+    }
+
+    private IEnumerator BankInterest()
+    {
+        bool coroutineRun = true;
+
+        while (coroutineRun)
+        {
+            yield return new WaitForSecondsRealtime(5f);
+
+            Bank = Bank + (Bank * 0.01f);
+            Bank =  (float)Math.Round(Bank, 2);
+
+
+        }
     }
 }
