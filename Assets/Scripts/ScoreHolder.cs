@@ -18,13 +18,15 @@ public class ScoreHolder : MonoBehaviour
     private float interestTimer = 0;
     private float progressTimer = 0;
 
-
-    private IEnumerator buildingCoroutine;
-
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
     public GameObject ProgressBarGrey;
     private GameObject CollidedObject;
+
+
+    private IEnumerator buildingCoroutine;
+
+
 
     public bool Interacting;
 
@@ -75,14 +77,8 @@ public class ScoreHolder : MonoBehaviour
             case "Property":
                 //purchase property
 
-                switch (collision.name)
-                {
-                    case "Property1":
-                        //Price = propPriceOne;
-                        break;
-                }
-
-
+                Price = CollidedObject.GetComponent<PropertyProperties>().Price;
+                
                 if (Score >= Price)
                 {
                     valid = true;
@@ -130,14 +126,14 @@ public class ScoreHolder : MonoBehaviour
                 {
                     if (Price > Cash)
                     {
-                        Price += Price - Cash;
+                        Price = Price - Cash;
                     }
                     else
                     {
                         Cash -= Price;
                         Price = 0;
                     }
-                    
+
                     if (Price > 0)
                     {
                         Bank -= Price;
@@ -146,13 +142,14 @@ public class ScoreHolder : MonoBehaviour
                     //update values
                     Score = Cash + Bank;
                     CollidedObject.tag = "Purchased";
+                    CollidedObject.GetComponent<PropertyProperties>().Purchased();
                 }
                 else
                 {
                     Debug.Log("Cannot afford action, Called incorrectly?");
                 }
 
-                
+
                 break;
         }
     }
