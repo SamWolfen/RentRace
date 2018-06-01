@@ -126,7 +126,7 @@ public class ScoreHolder : MonoBehaviour
                 {
                     if (Price > Cash)
                     {
-                        Price = Price - Cash;
+                        Price -= Cash;
                     }
                     else
                     {
