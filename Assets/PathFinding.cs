@@ -10,8 +10,9 @@ public class PathFinding : MonoBehaviour
     public GameObject Pather;
     int RandomHolder;
     GameObject[] PotentialTargets = new GameObject[150];
-    Vector2 TestDirection = new Vector2(0, 0);
+    public Vector2 TestDirection = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
+    public float speed;
 
 
 
@@ -20,6 +21,7 @@ public class PathFinding : MonoBehaviour
     {
         RandomHolder = Random.Range(1, 4);
         StartCoroutine(AIPathFinding(RandomHolder));
+        StartCoroutine(Refiner());
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class PathFinding : MonoBehaviour
     IEnumerator AIPathFinding(int RandomHolder)
     {
         bool looping = true;
-        
+
         GameObject Target;
 
         switch (RandomHolder)
@@ -64,19 +66,13 @@ public class PathFinding : MonoBehaviour
             ///Move towards
             Pursue(Target);
         }
-        
+
     }
 
     void Pursue(GameObject target)
     {
-        TestDirection = target.transform.position - transform.position;
-        //RefineDirection(TestDirection.normalized);
-        transform.Translate(TestDirection.normalized * Time.deltaTime);
 
-        
-
-        
-
+        transform.Translate(direction * Time.deltaTime * speed);
         return;
     }
 
@@ -87,7 +83,7 @@ public class PathFinding : MonoBehaviour
         GameObject ReturnedTarget = Player;
         //
         //GameObject TestTarget;
-        
+
 
         if (specificTag != null)
         {
@@ -111,8 +107,8 @@ public class PathFinding : MonoBehaviour
                 ReturnedTarget = Object;
             }
         }
-        
-        
+
+
 
         return ReturnedTarget;
     }
@@ -123,87 +119,100 @@ public class PathFinding : MonoBehaviour
 
 
 
-        if (Test.x > transform.localPosition.x)
+        if (Test.x > 0)
         {
             //moving right
 
-            if (Test.y > transform.localPosition.y)
+            if (Test.y > 0)
             {
                 if (Test.x > Test.y)
                 {
                     //moving right?
-                    direction = new Vector2(-1, 0);
-                    
+                    direction = new Vector2(1, 0);
+
                 }
 
                 if (Test.x < Test.y)
                 {
                     //moving up?
-                    direction = new Vector2(0, -1);
+                    direction = new Vector2(0, 1);
                 }
             }
 
-            if (Test.y < transform.localPosition.y)
+            if (Test.y < 0)
             {
-                
+
 
                 if (Test.x > Test.y * -1)
                 {
                     //moving right?
-                    direction = new Vector2(-1, 0);
+                    direction = new Vector2(1, 0);
 
                 }
 
                 if (Test.x < Test.y * -1)
                 {
                     //moving down?
-                    direction = new Vector2(0, 1);
+                    direction = new Vector2(0, -1);
                 }
             }
         };
 
-        if (Test.x < transform.localPosition.x)
+        if (Test.x < 0)
         {
             //moving left
-            
+
 
             if (Test.y > transform.localPosition.y)
             {
                 if (Test.x * -1 > Test.y)
                 {
                     //moving left?
-                    direction = new Vector2(1, 0);
+                    direction = new Vector2(-1, 0);
 
                 }
 
                 if (Test.x * -1 < Test.y)
                 {
                     //moving up?
-                    direction = new Vector2(0, -1);
+                    direction = new Vector2(0, 1);
                 }
             }
 
-            if (Test.y < transform.localPosition.y)
+            if (Test.y < 0)
             {
-                
+
 
                 if (Test.x * -1 > Test.y * -1)
                 {
                     //moving left?
-                    direction = new Vector2(1, 0);
+                    direction = new Vector2(-1, 0);
 
                 }
 
                 if (Test.x * -1 < Test.y * -1)
                 {
                     //moving down?
-                    direction = new Vector2(0, 1);
+                    direction = new Vector2(0, -1);
                 }
             }
         };
 
-        
+
     }
 
+
+    IEnumerator Refiner()
+    {
+        bool loop = true;
+        while (loop)
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            TestDirection = FindNearestTarget(Pather, 1, "Player").transform.position - transform.position;
+            RefineDirection(TestDirection.normalized);
+        }
+
+    }
 
 }
