@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// Thank you to Kier for helping with the pool generation
 
 public class CoinSpawner : MonoBehaviour
 {
@@ -68,6 +68,8 @@ public class CoinSpawner : MonoBehaviour
 
                     spawnPoint = new Vector3(x, y, 7f);
 
+                    pointOccupied = IsPointOccupied(spawnPoint);
+
                     break;
 
                 case "Purchased":
@@ -78,11 +80,13 @@ public class CoinSpawner : MonoBehaviour
                     y = Random.Range(-2f, 2f);
                     velocity = new Vector2(x, y);
 
+                    pointOccupied = false;
+
                     break;
 
             }
 
-            pointOccupied = IsPointOccupied(spawnPoint);
+            
 
             //gameObject.activeSelf
 

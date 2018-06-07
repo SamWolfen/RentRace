@@ -21,7 +21,7 @@ public class ScoreHolder : MonoBehaviour
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
     public GameObject ProgressBarGrey;
-    private GameObject CollidedObject;
+    public GameObject CollidedObject;
 
 
     private IEnumerator buildingCoroutine;
@@ -179,7 +179,7 @@ public class ScoreHolder : MonoBehaviour
                 break;
 
             case "":
-
+                //just an extra slot in case I need it later
                 break;
 
             case "Repair":

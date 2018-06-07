@@ -10,6 +10,7 @@ TagManager:
   - Property
   - Purchased
   - CoinSpawner
+  - Enemy
   layers:
   - Default
   - TransparentFX
