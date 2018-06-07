@@ -6,10 +6,11 @@ using UnityEngine;
 public class PathFinding : MonoBehaviour
 {
 
-    public GameObject Player;
+    //public GameObject Player;
     public GameObject Pather;
     int RandomHolder;
     GameObject[] PotentialTargets = new GameObject[150];
+    GameObject Target;
     public Vector2 TestDirection = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
     public float speed;
@@ -35,7 +36,7 @@ public class PathFinding : MonoBehaviour
     {
         bool looping = true;
 
-        GameObject Target;
+        Target = Pather;
 
         switch (RandomHolder)
         {
@@ -62,7 +63,19 @@ public class PathFinding : MonoBehaviour
             yield return new WaitForEndOfFrame();
 
             ///Find Nearest Object
-            Target = FindNearestTarget(Pather, 1, "Player");
+            ///
+            switch (Pather.tag)
+            {
+                case "Enemy":
+                    Target = FindNearestTarget(Pather, 1, "Player");
+                    break;
+                case "Agent":
+                    Target = FindNearestTarget(Pather, 1, "Coin");
+                    break;
+            }
+
+
+            
             ///Move towards
             Pursue(Target);
         }
@@ -76,35 +89,29 @@ public class PathFinding : MonoBehaviour
         return;
     }
 
-    public GameObject FindNearestTarget(GameObject Caller, float Radius, [Optional] string specificTag)
+    public GameObject FindNearestTarget(GameObject Caller, float Radius, string specificTag)
     {
         //finds Objects in a radius, and can filter for a specific tag, returns closest
 
-        GameObject ReturnedTarget = Player;
+        GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);
         //
         //GameObject TestTarget;
 
 
-        if (specificTag != null)
-        {
-            PotentialTargets = GameObject.FindGameObjectsWithTag(specificTag);
-        }
-        else
-        {
-            PotentialTargets = FindObjectsOfType<GameObject>();
-        }
 
 
-        foreach (GameObject Object in PotentialTargets)
+        PotentialTargets = GameObject.FindGameObjectsWithTag(specificTag);
+        
+    
+        
+
+
+        foreach (GameObject TestObject in PotentialTargets)
         {
-            if (ReturnedTarget == null)
-            {
-                ReturnedTarget = Object;
-            }
             //compares distances, keeps the closest one
-            if (Vector3.Distance(Caller.transform.position, Object.transform.position) <= Vector3.Distance(Caller.transform.position, ReturnedTarget.transform.position))
+            if (Vector3.Distance(Caller.transform.position, TestObject.transform.position) <= Vector3.Distance(Caller.transform.position, ReturnedTarget.transform.position))
             {
-                ReturnedTarget = Object;
+                ReturnedTarget = TestObject;
             }
         }
 
@@ -209,7 +216,7 @@ public class PathFinding : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.5f);
 
-            TestDirection = FindNearestTarget(Pather, 1, "Player").transform.position - transform.position;
+            TestDirection = Target.transform.position - transform.position;
             RefineDirection(TestDirection.normalized);
         }
 

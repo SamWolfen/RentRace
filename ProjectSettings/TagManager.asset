@@ -11,6 +11,7 @@ TagManager:
   - Purchased
   - CoinSpawner
   - Enemy
+  - Agent
   layers:
   - Default
   - TransparentFX
