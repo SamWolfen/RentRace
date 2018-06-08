@@ -49,40 +49,35 @@ public class ExamplePlayerController : MonoBehaviour
         {
             case 0:
                 return;
-                break;
+                
 
             case 1:
 
-                movement = (Vector2)transform.position + (Vector2.right * Time.deltaTime * 10);
+                movement = (Vector2)transform.position + (Vector2.right);
 
                 break;
             case 2:
 
-                movement = (Vector2)transform.position + (Vector2.left * Time.deltaTime * 10);
+                movement = (Vector2)transform.position + (Vector2.left);
 
                 break;
             case 3:
 
-                movement = (Vector2)transform.position + (Vector2.up * Time.deltaTime * 10);
+                movement = (Vector2)transform.position + (Vector2.up);
 
                 break;
 
             case 4:
 
-                movement = (Vector2)transform.position + (Vector2.down * Time.deltaTime * 10);
+                movement = (Vector2)transform.position + (Vector2.down);
 
                 break;
 
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, movement, speed);
+        transform.position = Vector2.MoveTowards(transform.position, movement, speed*Time.deltaTime);
         
 
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
