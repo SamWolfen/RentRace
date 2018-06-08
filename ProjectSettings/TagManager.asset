@@ -12,6 +12,7 @@ TagManager:
   - CoinSpawner
   - Enemy
   - Agent
+  - Agency
   layers:
   - Default
   - TransparentFX

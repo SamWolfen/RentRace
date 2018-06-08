@@ -117,7 +117,7 @@ public class ScoreHolder : MonoBehaviour
             case "Bank":
                 Bank += Cash;
                 Cash = 0;
-                Score = Cash + Bank;
+                AddUpScore();
                 break;
 
             case "Property":
@@ -140,7 +140,7 @@ public class ScoreHolder : MonoBehaviour
                     }
 
                     //update values
-                    Score = Cash + Bank;
+                    AddUpScore();
                     CollidedObject.tag = "Purchased";
                     CollidedObject.GetComponent<PropertyProperties>().Purchased();
                 }
@@ -240,9 +240,14 @@ public class ScoreHolder : MonoBehaviour
 
             Bank = Bank + (Bank * 0.01f);
             Bank = (float)Math.Round(Bank, 2);
-            Score = Cash + Bank;
+            AddUpScore();
 
 
         }
+    }
+
+    public void AddUpScore()
+    {
+        Score = Cash + Bank;
     }
 }

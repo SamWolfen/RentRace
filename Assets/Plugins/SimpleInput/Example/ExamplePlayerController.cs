@@ -48,34 +48,41 @@ public class ExamplePlayerController : MonoBehaviour
         switch (direction)
         {
             case 0:
+                return;
                 break;
 
             case 1:
 
-                transform.Translate(speed * Time.deltaTime, 0f, 0f);
+                movement = (Vector2)transform.position + (Vector2.right * Time.deltaTime * 10);
 
                 break;
             case 2:
 
-                transform.Translate(-speed * Time.deltaTime, 0f, 0f);
+                movement = (Vector2)transform.position + (Vector2.left * Time.deltaTime * 10);
 
                 break;
             case 3:
 
-                transform.Translate(0f, speed * Time.deltaTime, 0f);
+                movement = (Vector2)transform.position + (Vector2.up * Time.deltaTime * 10);
 
                 break;
 
             case 4:
 
-                transform.Translate(0f, -speed * Time.deltaTime, 0f);
+                movement = (Vector2)transform.position + (Vector2.down * Time.deltaTime * 10);
 
                 break;
 
         }
 
+        transform.position = Vector2.MoveTowards(transform.position, movement, speed);
+        
 
+    }
 
+    private void FixedUpdate()
+    {
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

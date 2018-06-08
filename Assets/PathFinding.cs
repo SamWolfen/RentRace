@@ -70,7 +70,15 @@ public class PathFinding : MonoBehaviour
                     Target = FindNearestTarget(Pather, 1, "Player");
                     break;
                 case "Agent":
-                    Target = FindNearestTarget(Pather, 1, "Coin");
+
+                    if (Pather.GetComponent<RealEstateAgent>().GatheredCoins >= Pather.GetComponent<RealEstateAgent>().MaxCoins)
+                    {
+                        Target = FindNearestTarget(Pather, 1, "Agency");
+                    }
+                    else
+                    {
+                        Target = FindNearestTarget(Pather, 1, "Coin");
+                    }
                     break;
             }
 
@@ -206,6 +214,12 @@ public class PathFinding : MonoBehaviour
         };
 
 
+        if (TestObstructed(Pather, direction))
+        {
+            RefineDirection(new Vector2(Test.y, Test.x));
+        }
+
+        return;
     }
 
 
@@ -220,6 +234,18 @@ public class PathFinding : MonoBehaviour
             RefineDirection(TestDirection.normalized);
         }
 
+    }
+
+    public bool TestObstructed(GameObject Caller, Vector2 Move)
+    {
+        Vector2 pos = Caller.transform.position;
+        RaycastHit2D hit = Physics2D.Linecast(pos + Move, pos);
+        if (hit.collider.gameObject.tag == "Wall")
+        {
+            return (hit.collider == GetComponent<Collider2D>());
+        }
+
+        return false;
     }
 
 }
