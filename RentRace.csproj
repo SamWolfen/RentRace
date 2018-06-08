@@ -301,12 +301,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PathFinding.cs" />
-    <Compile Include="Assets\RealEstateAgent.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\GatherCoins.cs" />
+    <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
     <Compile Include="Assets\Scripts\PullScore.cs" />
+    <Compile Include="Assets\Scripts\RealEstateAgent.cs" />
     <Compile Include="Assets\Scripts\ScoreHolder.cs" />
   </ItemGroup>
   <ItemGroup>

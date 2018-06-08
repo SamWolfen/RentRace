@@ -9,9 +9,15 @@ public class PropertyProperties : MonoBehaviour {
     public GameObject Property;
     public GameObject CoinSpawnerObject;
     private bool runRentGen;
+    public enum DamageType
+    {
+        Water,
+        Electricity,
+        None
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -41,6 +47,13 @@ public class PropertyProperties : MonoBehaviour {
 
             //spawn coins
 
+            if (Random.Range(1,10) == 10)
+            {
+                if (Random.Range(1,2) == 1)
+                {
+                    DamageType = Water;
+                }
+            }
         }
     }
 }
