@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Property: {instanceID: 0}
+  - CoinSpawnerObject: {fileID: 1493843383994310, guid: a724932f38b033640a0a4e5ae0280d8b,
+      type: 2}
+  - SpeechBubble: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

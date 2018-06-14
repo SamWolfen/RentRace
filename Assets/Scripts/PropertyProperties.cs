@@ -9,6 +9,7 @@ public class PropertyProperties : MonoBehaviour
     public float spawnAmount;
     public GameObject Property;
     public GameObject CoinSpawnerObject;
+    public GameObject SpeechBubble;
     private bool runRentGen;
     public enum DamageType
     {
@@ -18,7 +19,7 @@ public class PropertyProperties : MonoBehaviour
     }
 
     public DamageType damageType;
-
+    public int damageChance;
     // Use this for initialization
     void Start()
     {
@@ -55,7 +56,7 @@ public class PropertyProperties : MonoBehaviour
 
             if (damageType == DamageType.None)
             {
-                if (Random.Range(1, 10) == 10)
+                if (Random.Range(1, 5) == 1)
                 {
                     if (Random.Range(1, 2) == 1)
                     {
@@ -67,6 +68,9 @@ public class PropertyProperties : MonoBehaviour
                         damageType = DamageType.Electricity;
                     }
                 }
+
+                SpeechBubble.GetComponent<SpeechToggle>().ToggleUtil(damageType);
+
             }
         }
     }

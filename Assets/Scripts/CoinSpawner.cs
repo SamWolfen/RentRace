@@ -9,15 +9,11 @@ public class CoinSpawner : MonoBehaviour
     public GameObject CoinSpawnerObject;
     public GameObject Coin;
     private List<GameObject> Coins = new List<GameObject>(100);
-
-
     Vector3 emptyVec = new Vector3(0, 0, 0);
 
     // Use this for initialization
     void Start()
     {
-
-
         int i = 0;
 
         while (i < 100)
@@ -36,7 +32,6 @@ public class CoinSpawner : MonoBehaviour
             CoinSpawn(emptyVec, CoinSpawnerObject);
             i++;
         }
-
     }
 
     // Update is called once per frame
@@ -86,8 +81,6 @@ public class CoinSpawner : MonoBehaviour
 
             }
 
-            
-
             //gameObject.activeSelf
 
         }
@@ -104,10 +97,6 @@ public class CoinSpawner : MonoBehaviour
             Coins[i].transform.position = spawnPoint;
             Coins[i].GetComponent<Rigidbody2D>().velocity = velocity;
         }
-
-
-
-
     }
 
     public bool IsPointOccupied(Vector3 point)
