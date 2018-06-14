@@ -301,6 +301,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\HandleMovement.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
@@ -309,6 +310,7 @@
     <Compile Include="Assets\Scripts\RealEstateAgent.cs" />
     <Compile Include="Assets\Scripts\ScoreHolder.cs" />
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
+    <Compile Include="Assets\SwipeMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\SimpleInput\Credits.txt" />

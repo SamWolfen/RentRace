@@ -7,8 +7,6 @@ public class ExamplePlayerController : MonoBehaviour
     public string horizontalAxis = "Horizontal";
     public string verticalAxis = "Vertical";
     public float speed;
-
-
     private float inputHorizontal;
     private float inputVertical;
     private int direction = 0;
