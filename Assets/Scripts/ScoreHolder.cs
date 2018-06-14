@@ -13,11 +13,10 @@ public class ScoreHolder : MonoBehaviour
     public float Bank = 0;
     private float Price = 0;
 
-    private float generalTimer = 0;
-    private float generalCounter = 0;
-    private float interestTimer = 0;
-    private float progressTimer = 0;
 
+
+
+    private float progressTimer = 0;
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
     public GameObject ProgressBarGrey;

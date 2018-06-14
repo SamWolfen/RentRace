@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandleMovement : MonoBehaviour {
     public float speed;
-    private int direction = 0;
+
     private Vector2 movement;
 
     // Use this for initialization

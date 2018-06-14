@@ -69,12 +69,10 @@ public class SwipeMovement : MonoBehaviour {
                 if (x<0)
                 {
                     swipeL = true;
-                    Debug.Log("Left drag");
                 }
                 else
                 {
-                    swipeR = true;
-                    Debug.Log("right drag");
+                    swipeR = true;  
                 }
 
             }else {

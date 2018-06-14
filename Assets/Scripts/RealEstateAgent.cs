@@ -6,12 +6,12 @@ public class RealEstateAgent : MonoBehaviour
 {
     public int gatheredCoins;
     public float maxRuns;
-    float Runs = 0;
+
     public bool isActive;
     public int maxCoins;
     public GameObject Player;
     public GameObject ParentAgency;
-    int maxCoinHolder;
+
 
 
 
@@ -19,7 +19,7 @@ public class RealEstateAgent : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        maxCoinHolder = maxCoins;
+        
     }
 
     //IEnumerator ReaEstateAgentActing()
