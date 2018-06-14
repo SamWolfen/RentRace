@@ -78,7 +78,18 @@ public class ScoreHolder : MonoBehaviour
                 //purchase property
 
                 Price = CollidedObject.GetComponent<PropertyProperties>().Price;
-                
+
+                if (Score >= Price)
+                {
+                    valid = true;
+                }
+                break;
+
+            case "Agency":
+                //hire agent
+
+                Price = CollidedObject.GetComponent<AgentManager>().Price;
+
                 if (Score >= Price)
                 {
                     valid = true;
@@ -143,14 +154,45 @@ public class ScoreHolder : MonoBehaviour
                     AddUpScore();
                     CollidedObject.tag = "Purchased";
                     CollidedObject.GetComponent<PropertyProperties>().Purchased();
+
                 }
                 else
                 {
                     Debug.Log("Cannot afford action, Called incorrectly?");
                 }
-
-
                 break;
+
+            case "Agency":
+                //hire agent
+                if (Score >= Price)
+                {
+                    if (Price > Cash)
+                    {
+                        Price -= Cash;
+                    }
+                    else
+                    {
+                        Cash -= Price;
+                        Price = 0;
+                    }
+
+                    if (Price > 0)
+                    {
+                        Bank -= Price;
+                    }
+
+                    //update values
+                    AddUpScore();
+                    CollidedObject.GetComponent<AgentManager>().HireAgent();
+
+                }
+                else
+                {
+                    Debug.Log("Cannot afford action, Called incorrectly?");
+                }
+                break;
+
+                
         }
     }
 
@@ -178,8 +220,8 @@ public class ScoreHolder : MonoBehaviour
                 requiredProgress = Price;
                 break;
 
-            case "":
-                //just an extra slot in case I need it later
+            case "Agency":
+                requiredProgress = Price;
                 break;
 
             case "Repair":

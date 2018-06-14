@@ -8,10 +8,10 @@ public class PathFinding : MonoBehaviour
 
     //public GameObject Player;
     public GameObject Pather;
-    int RandomHolder;
-    GameObject[] PotentialTargets = new GameObject[150];
-    GameObject Target;
-    public Vector2 TestDirection = new Vector2(0, 0);
+    int randomHolder;
+    GameObject[] potentialTargets = new GameObject[150];
+    public GameObject Target;
+    public Vector2 testDirection = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
     public float speed;
 
@@ -20,9 +20,7 @@ public class PathFinding : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        RandomHolder = Random.Range(1, 4);
-        StartCoroutine(AIPathFinding(RandomHolder));
-        StartCoroutine(Refiner());
+        Activated();
     }
 
     // Update is called once per frame
@@ -31,6 +29,12 @@ public class PathFinding : MonoBehaviour
 
     }
 
+    public void Activated()
+    {
+        randomHolder = Random.Range(1, 4);
+        StartCoroutine(AIPathFinding(randomHolder));
+        StartCoroutine(Refiner());
+    }
 
     IEnumerator AIPathFinding(int RandomHolder)
     {
@@ -38,24 +42,24 @@ public class PathFinding : MonoBehaviour
 
         Target = Pather;
 
-        switch (RandomHolder)
-        {
-            case 1:
-                direction = new Vector2(0, 1);
-                break;
+        //switch (randomHolder)
+        //{
+        //    case 1:
+        //        direction = new Vector2(0, 1);
+        //        break;
 
-            case 2:
-                direction = new Vector2(0, -1);
-                break;
+        //    case 2:
+        //        direction = new Vector2(0, -1);
+        //        break;
 
-            case 3:
-                direction = new Vector2(1, 0);
-                break;
+        //    case 3:
+        //        direction = new Vector2(1, 0);
+        //        break;
 
-            case 4:
-                direction = new Vector2(-1, 0);
-                break;
-        }
+        //    case 4:
+        //        direction = new Vector2(-1, 0);
+        //        break;
+        //}
 
 
         while (looping == true)
@@ -71,9 +75,9 @@ public class PathFinding : MonoBehaviour
                     break;
                 case "Agent":
 
-                    if (Pather.GetComponent<RealEstateAgent>().GatheredCoins >= Pather.GetComponent<RealEstateAgent>().MaxCoins)
+                    if (Pather.GetComponent<RealEstateAgent>().gatheredCoins >= Pather.GetComponent<RealEstateAgent>().maxCoins)
                     {
-                        Target = FindNearestTarget(Pather, 1, "Agency");
+                        Target = FindNearestTarget(Pather, 1, "HiredAgency");
                     }
                     else
                     {
@@ -99,22 +103,10 @@ public class PathFinding : MonoBehaviour
 
     public GameObject FindNearestTarget(GameObject Caller, float Radius, string specificTag)
     {
-        //finds Objects in a radius, and can filter for a specific tag, returns closest
-
-        GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);
-        //
-        //GameObject TestTarget;
-
-
-
-
-        PotentialTargets = GameObject.FindGameObjectsWithTag(specificTag);
-        
-    
-        
-
-
-        foreach (GameObject TestObject in PotentialTargets)
+        GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);   
+        potentialTargets = GameObject.FindGameObjectsWithTag(specificTag);
+       
+        foreach (GameObject TestObject in potentialTargets)
         {
             //compares distances, keeps the closest one
             if (Vector3.Distance(Caller.transform.position, TestObject.transform.position) <= Vector3.Distance(Caller.transform.position, ReturnedTarget.transform.position))
@@ -219,6 +211,7 @@ public class PathFinding : MonoBehaviour
             RefineDirection(new Vector2(Test.y, Test.x));
         }
 
+        //direction /= 2;
         return;
     }
 
@@ -230,8 +223,8 @@ public class PathFinding : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(0.5f);
 
-            TestDirection = Target.transform.position - transform.position;
-            RefineDirection(TestDirection.normalized);
+            testDirection = Target.transform.position - transform.position;
+           RefineDirection(testDirection.normalized);
         }
 
     }

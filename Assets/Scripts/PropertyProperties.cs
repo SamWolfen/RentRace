@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PropertyProperties : MonoBehaviour {
+public class PropertyProperties : MonoBehaviour
+{
     public float Price;
     public float spawnRate;
     public float spawnAmount;
@@ -16,15 +17,19 @@ public class PropertyProperties : MonoBehaviour {
         None
     }
 
+    public DamageType damageType;
+
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void Purchased()
     {
@@ -47,11 +52,20 @@ public class PropertyProperties : MonoBehaviour {
 
             //spawn coins
 
-            if (Random.Range(1,10) == 10)
+
+            if (damageType == DamageType.None)
             {
-                if (Random.Range(1,2) == 1)
+                if (Random.Range(1, 10) == 10)
                 {
-                    DamageType = Water;
+                    if (Random.Range(1, 2) == 1)
+                    {
+                        damageType = DamageType.Water;
+
+                    }
+                    else
+                    {
+                        damageType = DamageType.Electricity;
+                    }
                 }
             }
         }

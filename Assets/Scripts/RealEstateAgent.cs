@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RealEstateAgent : MonoBehaviour {
-    public int GatheredCoins;
-    public float Timer;
+public class RealEstateAgent : MonoBehaviour
+{
+    public int gatheredCoins;
+    public float maxRuns;
+    float Runs = 0;
     public bool isActive;
-    public int MaxCoins;
+    public int maxCoins;
     public GameObject Player;
-    int MaxCoinHolder;
-  
+    public GameObject ParentAgency;
+    int maxCoinHolder;
 
 
 
-	// Use this for initialization
-	void Start () {
-        MaxCoinHolder = MaxCoins;
-	}
+
+    // Use this for initialization
+    void Start()
+    {
+        maxCoinHolder = maxCoins;
+    }
 
     //IEnumerator ReaEstateAgentActing()
     //  {
@@ -35,43 +39,59 @@ public class RealEstateAgent : MonoBehaviour {
     //     yield return ;
     //  }
 
-    IEnumerator DepositMoney()
+    //IEnumerator DepositMoney()
+    //{
+
+
+    //    while(gatheredCoins >=10)
+    //    {
+    //        yield return new WaitForSecondsRealtime(0.5f);
+    //        maxCoins -= 10;
+    //        gatheredCoins -= 10;
+    //        
+
+    //    }
+    //    maxCoins = maxCoinHolder;
+    //    Runs++;
+
+    //    if (Runs == maxRuns)
+    //    {
+    //        Runs = 0;
+    //        ParentAgency.GetComponent<AgentManager>().AgentFinished();
+    //    }
+
+
+    //    yield break;
+    //}
+
+    void DepositMoney()
     {
-        
+        Player.GetComponent<ScoreHolder>().Bank += gatheredCoins;
+        Player.GetComponent<ScoreHolder>().AddUpScore();
+        ParentAgency.GetComponent<AgentManager>().runs++;
+        gatheredCoins = 0;
 
-        while(GatheredCoins >=10)
-        {
-            yield return new WaitForSecondsRealtime(0.5f);
-            MaxCoins -= 10;
-            GatheredCoins -= 10;
-            Player.GetComponent<ScoreHolder>().Bank += 10;
-            Player.GetComponent<ScoreHolder>().AddUpScore();
+        Debug.Log("deposited");
 
-            Debug.Log("deposited");
-
-        }
-        MaxCoins = MaxCoinHolder;
-
-        yield break;
+        ParentAgency.GetComponent<AgentManager>().AgentFinished();
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
-        if (collision.tag == "Coin" && GatheredCoins < MaxCoins)
+        if (collision.tag == "Coin" && gatheredCoins < maxCoins)
         {
             collision.gameObject.SetActive(false);
-            GatheredCoins += 10;
+            gatheredCoins += 10;
         }
 
-        if (collision.tag == "Agency")
+        if (collision.tag == "HiredAgency" && gatheredCoins >= maxCoins)
         {
-            StartCoroutine(DepositMoney());
-            
+            DepositMoney();
+
         }
     }
 
-    
+
+
+
 }

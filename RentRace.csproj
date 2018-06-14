@@ -301,8 +301,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AgentManager.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
-    <Compile Include="Assets\Scripts\GatherCoins.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
     <Compile Include="Assets\Scripts\PullScore.cs" />
