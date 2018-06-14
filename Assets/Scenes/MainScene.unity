@@ -1064,7 +1064,7 @@ MonoBehaviour:
   tap: 0
   swipeL: 0
   swipeR: 0
-  swipeU: 1
+  swipeU: 0
   swipeD: 0
 --- !u!4 &403018717 stripped
 Transform:
