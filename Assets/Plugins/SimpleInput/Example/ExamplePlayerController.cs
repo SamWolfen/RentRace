@@ -74,8 +74,6 @@ public class ExamplePlayerController : MonoBehaviour
         }
 
         transform.position = Vector2.MoveTowards(transform.position, movement, speed*Time.deltaTime);
-        
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

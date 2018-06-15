@@ -12,6 +12,7 @@ public class ScoreHolder : MonoBehaviour
     public float Cash = 0;
     public float Bank = 0;
     private float Price = 0;
+    public float Damage;
 
 
 
@@ -95,6 +96,19 @@ public class ScoreHolder : MonoBehaviour
                 }
                 break;
 
+            case "Purchased":
+                //check damage
+
+                var DamageType = CollidedObject.GetComponent<PropertyProperties>().damageType;
+                Damage = CollidedObject.GetComponent<PropertyProperties>().Damage;
+                Price = Damage / 2;
+
+                if (Score >= Price && DamageType != PropertyProperties.DamageType.None)
+                {
+                    valid = true;
+                }
+                break;
+
         }
         //carries out building action
         if (collision.tag != "Coin" && valid == true)
@@ -118,7 +132,7 @@ public class ScoreHolder : MonoBehaviour
         Score = Cash + Bank;
     }
 
-    private void Invest(string BuildingType)
+    private void Interact(string BuildingType)
     {
         //Carries out investment action
 
@@ -191,7 +205,42 @@ public class ScoreHolder : MonoBehaviour
                 }
                 break;
 
-                
+            case "Purchased":
+                //repair
+
+                //check item (not implemented yet)
+                if (Score >= Price)
+                {
+                    if (Price > Cash)
+                    {
+                        Price -= Cash;
+                    }
+                    else
+                    {
+                        Cash -= Price;
+                        Price = 0;
+                    }
+
+                    if (Price > 0)
+                    {
+                        Bank -= Price;
+                    }
+
+                    //update values
+                    AddUpScore();
+                    CollidedObject.GetComponent<PropertyProperties>().damageType = PropertyProperties.DamageType.None;
+
+                }
+                else
+                {
+                    Debug.Log("Cannot afford action, Called incorrectly?");
+                }
+                break;
+
+
+
+
+
         }
     }
 
@@ -223,8 +272,8 @@ public class ScoreHolder : MonoBehaviour
                 requiredProgress = Price;
                 break;
 
-            case "Repair":
-                //requiredProgress = Damage;
+            case "Purchased":
+                requiredProgress = Damage;
                 break;
         }
 
@@ -248,7 +297,7 @@ public class ScoreHolder : MonoBehaviour
                 if (Progress >= requiredProgress)
                 {
                     //complete action, reset loading bar
-                    Invest(building);
+                    Interact(building);
                     ProgressBar.SetActive(false);
                     ProgressBarGreen.transform.localPosition = initialPosGreen;
 

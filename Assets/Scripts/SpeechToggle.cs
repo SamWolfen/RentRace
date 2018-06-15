@@ -33,6 +33,8 @@ public class SpeechToggle : MonoBehaviour
             case PropertyProperties.DamageType.None:
                 SpeechBubble.SetActive(false);
                 Face.SetActive(false);
+                Water.SetActive(false);
+                Electricity.SetActive(false);
                 break;
         }
     }

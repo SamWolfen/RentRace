@@ -496,6 +496,8 @@ MonoBehaviour:
   Property: {fileID: 159087603}
   CoinSpawnerObject: {fileID: 828263650}
   SpeechBubble: {fileID: 2093606275}
+  Damage: 0
+  DamageScale: 1
   damageType: 2
   damageChance: 0
 --- !u!58 &159087606
