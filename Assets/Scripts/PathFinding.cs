@@ -64,6 +64,7 @@ public class PathFinding : MonoBehaviour
                         try
                         {
                             Target = FindNearestTarget(Pather, 1, "Coin");
+                            Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(false);
                         }
                         catch
                         {
@@ -72,6 +73,7 @@ public class PathFinding : MonoBehaviour
 
                         if (Target == Pather)
                         {
+                            Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(true);
                             Target = FindNearestTarget(Pather, 1, "HiredAgency");
                         }
 

@@ -6,8 +6,8 @@ public class RealEstateAgent : MonoBehaviour
 {
     public int gatheredCoins;
     public float maxRuns;
-
-    public bool isActive;
+    public GameObject SpeechBubble;
+    //public bool isActive;
     public int maxCoins;
     public GameObject Player;
     public GameObject ParentAgency;
@@ -91,7 +91,10 @@ public class RealEstateAgent : MonoBehaviour
         }
     }
 
-
+    public void AgentBubbleToggle(bool trulse)
+    {
+        SpeechBubble.GetComponent<SpeechToggle>().ToggleCantFindCoin(trulse);
+    }
 
 
 }
