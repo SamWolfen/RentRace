@@ -42,26 +42,6 @@ public class PathFinding : MonoBehaviour
 
         Target = Pather;
 
-        //switch (randomHolder)
-        //{
-        //    case 1:
-        //        direction = new Vector2(0, 1);
-        //        break;
-
-        //    case 2:
-        //        direction = new Vector2(0, -1);
-        //        break;
-
-        //    case 3:
-        //        direction = new Vector2(1, 0);
-        //        break;
-
-        //    case 4:
-        //        direction = new Vector2(-1, 0);
-        //        break;
-        //}
-
-
         while (looping == true)
         {
             yield return new WaitForEndOfFrame();
@@ -81,13 +61,26 @@ public class PathFinding : MonoBehaviour
                     }
                     else
                     {
-                        Target = FindNearestTarget(Pather, 1, "Coin");
+                        try
+                        {
+                            Target = FindNearestTarget(Pather, 1, "Coin");
+                        }
+                        catch
+                        {
+                            Debug.Log("No Coins Found");
+                        }
+
+                        if (Target == Pather)
+                        {
+                            Target = FindNearestTarget(Pather, 1, "HiredAgency");
+                        }
+
                     }
                     break;
             }
 
 
-            
+
             ///Move towards
             Pursue(Target);
         }
@@ -103,29 +96,42 @@ public class PathFinding : MonoBehaviour
 
     public GameObject FindNearestTarget(GameObject Caller, float Radius, string specificTag)
     {
-        GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);   
+
         potentialTargets = GameObject.FindGameObjectsWithTag(specificTag);
-       
-        foreach (GameObject TestObject in potentialTargets)
+
+        if (potentialTargets.Length > 0)
         {
-            //compares distances, keeps the closest one
-            if (Vector3.Distance(Caller.transform.position, TestObject.transform.position) <= Vector3.Distance(Caller.transform.position, ReturnedTarget.transform.position))
+
+            GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);
+
+
+
+
+            foreach (GameObject TestObject in potentialTargets)
             {
-                ReturnedTarget = TestObject;
+                //compares distances, keeps the closest one
+                if (Vector3.Distance(Caller.transform.position, TestObject.transform.position) <= Vector3.Distance(Caller.transform.position, ReturnedTarget.transform.position))
+                {
+                    ReturnedTarget = TestObject;
+                }
             }
+
+
+
+            return ReturnedTarget;
+
+        }
+        else
+        {
+            return Pather;
         }
 
-
-
-        return ReturnedTarget;
+    
     }
 
 
     private void RefineDirection(Vector2 Test)
     {
-
-
-
         if (Test.x > 0)
         {
             //moving right
@@ -224,7 +230,7 @@ public class PathFinding : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.5f);
 
             testDirection = Target.transform.position - transform.position;
-           RefineDirection(testDirection.normalized);
+            RefineDirection(testDirection.normalized);
         }
 
     }
