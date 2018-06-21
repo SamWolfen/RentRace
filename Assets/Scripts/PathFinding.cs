@@ -14,7 +14,12 @@ public class PathFinding : MonoBehaviour
     public Vector2 testDirection = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
     public float speed;
+    enum ObstructedSide
+    {
+        Up = 1, Down = 2, Left = 3, Right = 4
+    }
 
+    ObstructedSide obstructedSide;
 
 
     // Use this for initialization
@@ -92,6 +97,8 @@ public class PathFinding : MonoBehaviour
     void Pursue(GameObject target)
     {
 
+
+
         transform.Translate(direction * Time.deltaTime * speed);
         return;
     }
@@ -128,7 +135,7 @@ public class PathFinding : MonoBehaviour
             return Pather;
         }
 
-    
+
     }
 
 
@@ -214,7 +221,7 @@ public class PathFinding : MonoBehaviour
         };
 
 
-        if (TestObstructed(Pather, direction))
+        if (TestObstructed(Pather.transform.position, direction))
         {
             RefineDirection(new Vector2(Test.y, Test.x));
         }
@@ -237,9 +244,95 @@ public class PathFinding : MonoBehaviour
 
     }
 
-    public bool TestObstructed(GameObject Caller, Vector2 Move)
+
+    // ***********************************************************
+    void FindRoute(GameObject target)
     {
-        Vector2 pos = Caller.transform.position;
+
+        Vector2 testpos = transform.position;
+        Vector2[] waypoints = new Vector2[15];
+        int i = 0;
+
+
+        while (i < 15 || testpos != (Vector2)target.transform.position)
+        {
+            //check obstructed
+            if (TestObstructed(Pather.transform.position, direction))
+            {
+                if (direction == Vector2.up)
+                {
+                    obstructedSide = ObstructedSide.Up;
+                }
+                else if (direction == Vector2.down)
+                {
+                    obstructedSide = ObstructedSide.Down;
+                }
+                else if (direction == Vector2.left)
+                {
+                    obstructedSide = ObstructedSide.Left;
+                }
+                else if (direction == Vector2.right)
+                {
+                    obstructedSide = ObstructedSide.Right;
+                }
+
+
+
+
+
+
+                switch (obstructedSide)
+                {
+
+                    case ObstructedSide.Up:
+                        //check along x
+                        while (obstructedSide == ObstructedSide.Up)
+                        {
+                            testpos += Vector2.right;
+                            TestObstructed(testpos, direction);
+                        }
+
+                        waypoints[i] = testpos;
+
+                        break;
+
+                    case ObstructedSide.Down:
+                        //check along x
+
+                        break;
+                    case ObstructedSide.Left:
+                        //check along y
+
+                        break;
+                    case ObstructedSide.Right:
+                        //check along y
+
+                        break;
+                }
+
+
+
+                //figure out which side obstacle is on
+
+                //if obstacle is on left or right, check various coords on y until clear. if y is obstructed, go other way along y
+                //eventually a way will be clear along x (assuming x was blocked)
+                //when this happens drop a waypoint and repeat until the waypoints lead to the target.
+
+                // at some point if theres multiple paths then we will have to find the shortest one :/
+
+                testpos = new Vector2(testpos.x, testpos.y);
+
+            }
+        }
+
+
+
+
+
+    }
+    public bool TestObstructed(Vector2 pos, Vector2 Move)
+    {
+
         RaycastHit2D hit = Physics2D.Linecast(pos + Move, pos);
         if (hit.collider.gameObject.tag == "Wall")
         {
@@ -248,5 +341,7 @@ public class PathFinding : MonoBehaviour
 
         return false;
     }
+
+
 
 }
