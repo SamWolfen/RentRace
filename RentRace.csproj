@@ -305,10 +305,11 @@
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
+    <Compile Include="Assets\Scripts\ProgressBarManager.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
     <Compile Include="Assets\Scripts\PullScore.cs" />
     <Compile Include="Assets\Scripts\RealEstateAgent.cs" />
-    <Compile Include="Assets\Scripts\ScoreHolder.cs" />
+    <Compile Include="Assets\Scripts\ScoreManagerAndInteraction.cs" />
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
     <Compile Include="Assets\SwipeMovement.cs" />
   </ItemGroup>

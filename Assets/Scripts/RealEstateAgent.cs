@@ -66,8 +66,8 @@ public class RealEstateAgent : MonoBehaviour
 
     void DepositMoney()
     {
-        Player.GetComponent<ScoreHolder>().Bank += gatheredCoins;
-        Player.GetComponent<ScoreHolder>().AddUpScore();
+        Player.GetComponent<ScoreManagerAndInteraction>().Bank += gatheredCoins;
+        Player.GetComponent<ScoreManagerAndInteraction>().AddUpScore();
         ParentAgency.GetComponent<AgentManager>().runs++;
         gatheredCoins = 0;
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PullScore : MonoBehaviour {
     public GameObject Player;
     private Text text;
-    private ScoreHolder scores;
+    private ScoreManagerAndInteraction scores;
 
     // Use this for initialization
     void Start () {
@@ -17,7 +17,7 @@ public class PullScore : MonoBehaviour {
 	void Update () {
         //move to somehting called less often to save power
         text = GetComponent<Text>();
-        scores = Player.GetComponent<ScoreHolder>();
+        scores = Player.GetComponent<ScoreManagerAndInteraction>();
 
         switch(this.name)
         {
