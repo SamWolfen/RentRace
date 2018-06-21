@@ -19,7 +19,7 @@ public class PropertyProperties : MonoBehaviour
         Electricity,
         None
     }
-    public float Damage  = 100;
+    public float Damage;
     public float DamageScale;
     public DamageType damageType;
     public int damageChance;
@@ -61,6 +61,8 @@ public class PropertyProperties : MonoBehaviour
             {
                 if (Random.Range(1, damageChance) == 1)
                 {
+                    //if damage is 0 initially then things screw up
+                    Damage = 1;
                     if (Random.Range(1, 2) == 1)
                     {
                         damageType = DamageType.Water;
@@ -103,14 +105,14 @@ public class PropertyProperties : MonoBehaviour
         {
             if (Damage <= 100)
             {
-                //Damage += DamageScale;
+                Damage += DamageScale;
             }
 
             yield return new WaitForSecondsRealtime(2);
         }
 
 
-        //Damage = 0;
+        Damage = 0;
         SpeechBubble.GetComponent<SpeechToggle>().ToggleUtil(damageType);
         damageCoroutineRunning = false;
 
