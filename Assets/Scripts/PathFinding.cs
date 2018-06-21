@@ -293,6 +293,14 @@ public class PathFinding : MonoBehaviour
                         }
 
                         waypoints[i] = testpos;
+                        i++;
+                        testpos = 
+
+                        while (obstructedSide == ObstructedSide.Up)
+                        {
+                            testpos += Vector2.right;
+                            TestObstructed(testpos, direction);
+                        }
 
                         break;
 
@@ -300,10 +308,12 @@ public class PathFinding : MonoBehaviour
                         //check along x
 
                         break;
+
                     case ObstructedSide.Left:
                         //check along y
 
                         break;
+
                     case ObstructedSide.Right:
                         //check along y
 
