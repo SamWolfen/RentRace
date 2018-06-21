@@ -61,13 +61,11 @@ public class PropertyProperties : MonoBehaviour
             {
                 if (Random.Range(1, damageChance) == 1)
                 {
-<<<<<<< HEAD
+
                     //if damage is 0 initially then things screw up
                     Damage = 1;
-=======
-                    Damage = 1;
 
->>>>>>> 5a82774fff87e4a0c608c83670087dd5f19649e5
+
                     if (Random.Range(1, 2) == 1)
                     {
                         damageType = DamageType.Water;
