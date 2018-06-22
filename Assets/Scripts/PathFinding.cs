@@ -294,7 +294,7 @@ public class PathFinding : MonoBehaviour
 
                         waypoints[i] = testpos;
                         i++;
-                        testpos = 
+                        //testpos = 
 
                         while (obstructedSide == ObstructedSide.Up)
                         {
