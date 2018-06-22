@@ -302,6 +302,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HandleMovement.cs" />
+    <Compile Include="Assets\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />

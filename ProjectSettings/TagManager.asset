@@ -15,6 +15,7 @@ TagManager:
   - Agency
   - HiredAgency
   - Damaged
+  - Node
   layers:
   - Default
   - TransparentFX
