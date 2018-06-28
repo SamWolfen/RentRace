@@ -150,14 +150,14 @@ public class PathFinding : MonoBehaviour
                 if (Test.x > Test.y)
                 {
                     //moving right?
-                    direction = new Vector2(1, 0);
+                    direction = Vector2.right;
 
                 }
 
                 if (Test.x < Test.y)
                 {
                     //moving up?
-                    direction = new Vector2(0, 1);
+                    direction = Vector2.up;
                 }
             }
 
@@ -168,14 +168,14 @@ public class PathFinding : MonoBehaviour
                 if (Test.x > Test.y * -1)
                 {
                     //moving right?
-                    direction = new Vector2(1, 0);
+                    direction = Vector2.right;
 
                 }
 
                 if (Test.x < Test.y * -1)
                 {
                     //moving down?
-                    direction = new Vector2(0, -1);
+                    direction = Vector2.down;
                 }
             }
         };
@@ -190,14 +190,14 @@ public class PathFinding : MonoBehaviour
                 if (Test.x * -1 > Test.y)
                 {
                     //moving left?
-                    direction = new Vector2(-1, 0);
+                    direction = Vector2.left;
 
                 }
 
                 if (Test.x * -1 < Test.y)
                 {
                     //moving up?
-                    direction = new Vector2(0, 1);
+                    direction = Vector2.up;
                 }
             }
 
@@ -208,14 +208,14 @@ public class PathFinding : MonoBehaviour
                 if (Test.x * -1 > Test.y * -1)
                 {
                     //moving left?
-                    direction = new Vector2(-1, 0);
+                    direction = Vector2.left;
 
                 }
 
                 if (Test.x * -1 < Test.y * -1)
                 {
                     //moving down?
-                    direction = new Vector2(0, -1);
+                    direction = Vector2.down;
                 }
             }
         };
