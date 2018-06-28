@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentRace", "RentRace.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentRace.Editor.Plugins", "RentRace.Editor.Plugins.csproj", "{247B8F73-4AC4-A842-721A-6E5E69E18F93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentRace.Editor", "RentRace.Editor.csproj", "{707577A2-4E05-869F-9F17-445A659C5690}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{247B8F73-4AC4-A842-721A-6E5E69E18F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247B8F73-4AC4-A842-721A-6E5E69E18F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{247B8F73-4AC4-A842-721A-6E5E69E18F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707577A2-4E05-869F-9F17-445A659C5690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707577A2-4E05-869F-9F17-445A659C5690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707577A2-4E05-869F-9F17-445A659C5690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707577A2-4E05-869F-9F17-445A659C5690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

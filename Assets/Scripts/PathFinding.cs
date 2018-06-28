@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class PathFinding : MonoBehaviour
     {
         randomHolder = Random.Range(1, 4);
         StartCoroutine(AIPathFinding(randomHolder));
-        StartCoroutine(Refiner());
+        //StartCoroutine(Refiner());
     }
 
     IEnumerator AIPathFinding(int RandomHolder)
@@ -89,7 +90,7 @@ public class PathFinding : MonoBehaviour
 
 
             ///Move towards
-            Pursue(Target);
+            Pather.GetComponent<Pathfinding.AIDestinationSetter>().target = Target.transform;
         }
 
     }

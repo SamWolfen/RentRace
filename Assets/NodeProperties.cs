@@ -22,14 +22,22 @@ public class NodeProperties : MonoBehaviour
     static Vector2 pos;
     Vector2 direction;
     public Collider2D[] allNodesp;
+    public float[] distScore = new float[4];
     PathFinding Pathfinder;
+    public float cost;
 
     // Use this for initialization
     void Start()
     {
+        for (int i = 0; i < distScore.Length; i++)
+        {
+            distScore[i] = 100;
+        }
         pos = transform.position;
         allNodesp = Physics2D.OverlapCircleAll(pos, 2.0f);
         FindNeighbours();
+
+        
 
     }
 
@@ -61,19 +69,33 @@ public class NodeProperties : MonoBehaviour
                     if (hit.collider.gameObject.name == allNodes[i].name)
                     {
                         Vector2 dir = (Vector2)allNodes[i].transform.position - pos;
-                       
+
                         n = DefineDirection(dir);
 
 
                         clear[n] = true;
                         Neighbour[n] = hit.collider.gameObject;
-                        
+
                     }
                 }
             }
 
             i++;
         }
+
+         n = 0;
+
+        while (n < distScore.Length)
+        {
+            if (clear[n])
+            {
+                distScore[n] = Vector2.Distance(pos, Neighbour[n].transform.position);
+            }
+            n++;
+
+        }
+
+
     }
 
 
