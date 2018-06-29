@@ -8,8 +8,10 @@ public class HandleMovement : MonoBehaviour
 
     private Vector2 movement;
     private Vector2 savedMovement;
+    private Vector2 queuedMovement;
     private Vector2 pos;
     Rigidbody2D rb;
+    bool queuedAction = false;
 
 
     // Use this for initialization
@@ -28,45 +30,70 @@ public class HandleMovement : MonoBehaviour
 
         if (GetComponent<SwipeMovement>().swipeL)
         {
-            savedMovement = (Vector2.left);
+            movement = (Vector2.left);
         }
 
         if (GetComponent<SwipeMovement>().swipeR)
         {
-            savedMovement = (Vector2.right);
+            movement = (Vector2.right);
         }
 
         if (GetComponent<SwipeMovement>().swipeU)
         {
-            savedMovement = (Vector2.up);
+            movement = (Vector2.up);
         }
 
         if (GetComponent<SwipeMovement>().swipeD)
         {
-            savedMovement = (Vector2.down);
+            movement = (Vector2.down);
         }
 
 
 
+        //if (queuedAction)
+        //{
+        //    RaycastHit2D qhit = Physics2D.Linecast(pos, pos + queuedMovement * Time.deltaTime * 10);
+        //    Debug.DrawRay(pos, queuedMovement * Time.deltaTime * 10);
+
+        //    if (qhit)
+        //    {
+        //        if (qhit.collider.gameObject.tag != "Wall")
+        //            {
+        //            movement = queuedMovement;
+        //            }
+        //    }
+        //    else
+        //    {
+        //        movement = queuedMovement;
+        //    }
+        //}
+
+        RaycastHit2D hit = Physics2D.Linecast(pos, pos + movement * Time.deltaTime * 20);
+        Debug.DrawRay(pos, movement * Time.deltaTime * 20);
 
 
-        RaycastHit2D hit = Physics2D.Linecast(pos, pos + movement * Time.deltaTime * speed*2);
+
 
         if (hit)
         {
-            if (hit.collider.gameObject.tag != "Wall")
+            Debug.Log(hit.collider.gameObject.tag);
+            if (hit.collider.gameObject.tag == "Wall")
             {
+                queuedMovement = movement;
                 movement = savedMovement;
+                queuedAction = true;
+
             }
         }
 
         if (!hit)
         {
-            movement = savedMovement;
+
         }
-        movement = savedMovement;
+        //movement = savedMovement;
         //transform.Translate(movement * Time.deltaTime * speed);
         v = movement * Time.deltaTime * speed;
+        savedMovement = movement;
         rb.velocity = v;
     }
 }
