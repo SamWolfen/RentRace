@@ -27,7 +27,7 @@ public class CoinSpawner : MonoBehaviour
 
         i = 0;
 
-        while (i < 30)
+        while (i < 50)
         {
             CoinSpawn(emptyVec, CoinSpawnerObject);
             i++;

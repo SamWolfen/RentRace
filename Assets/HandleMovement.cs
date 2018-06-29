@@ -2,40 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandleMovement : MonoBehaviour {
+public class HandleMovement : MonoBehaviour
+{
     public float speed;
 
     private Vector2 movement;
+    private Vector2 savedMovement;
+    private Vector2 pos;
+    Rigidbody2D rb;
+
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+        movement = new Vector2(0, 0);
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        pos = transform.position;
+        Vector2 v = rb.velocity;
+
         if (GetComponent<SwipeMovement>().swipeL)
         {
-            movement = (Vector2.left);
+            savedMovement = (Vector2.left);
         }
 
         if (GetComponent<SwipeMovement>().swipeR)
         {
-            movement = (Vector2.right);
+            savedMovement = (Vector2.right);
         }
 
         if (GetComponent<SwipeMovement>().swipeU)
         {
-            movement = (Vector2.up);
+            savedMovement = (Vector2.up);
         }
 
         if (GetComponent<SwipeMovement>().swipeD)
         {
-            movement = (Vector2.down);
+            savedMovement = (Vector2.down);
         }
 
 
-        transform.Translate(movement * Time.deltaTime * speed);
 
+
+
+        RaycastHit2D hit = Physics2D.Linecast(pos, pos + movement * Time.deltaTime * speed*2);
+
+        if (hit)
+        {
+            if (hit.collider.gameObject.tag != "Wall")
+            {
+                movement = savedMovement;
+            }
+        }
+
+        if (!hit)
+        {
+            movement = savedMovement;
+        }
+        movement = savedMovement;
+        //transform.Translate(movement * Time.deltaTime * speed);
+        v = movement * Time.deltaTime * speed;
+        rb.velocity = v;
     }
 }
