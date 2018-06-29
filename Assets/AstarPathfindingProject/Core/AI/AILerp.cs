@@ -480,7 +480,8 @@ namespace Pathfinding {
 				Quaternion nextRotation;
 				MovementUpdate(Time.deltaTime, out nextPosition, out nextRotation);
 				FinalizeMovement(nextPosition, nextRotation);
-			}
+                SearchPath();
+            }
 		}
 
 		/** \copydoc Pathfinding::IAstarAI::MovementUpdate */

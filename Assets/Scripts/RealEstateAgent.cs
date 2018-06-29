@@ -28,7 +28,7 @@ public class RealEstateAgent : MonoBehaviour
         while (true)
         {
             yield return new WaitForSecondsRealtime (0.5f);
-            BuggyPathingFix();
+            GetComponent<Pathfinding.AILerp>().SearchPath();
         }
     }
 
@@ -58,7 +58,7 @@ public class RealEstateAgent : MonoBehaviour
             DepositMoney();
 
         }
-        BuggyPathingFix();
+        //BuggyPathingFix();
     }
 
     private void Update()
