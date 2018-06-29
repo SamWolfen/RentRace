@@ -19,50 +19,19 @@ public class RealEstateAgent : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        StartCoroutine(FixPathing());
+        //BuggyPathingFix();
     }
 
-    //IEnumerator ReaEstateAgentActing()
-    //  {
-    //     // bool loop = true;
-    //     // while (loop)
-    //     // {
-    //     //     yield return new WaitForSecondsRealtime(0.3f);
-    //     //     if (isActive = true)
-    //     //     {
+   IEnumerator FixPathing()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime (0.5f);
+            BuggyPathingFix();
+        }
+    }
 
-    //     //     }
-    //     // }
-
-
-
-    //     yield return ;
-    //  }
-
-    //IEnumerator DepositMoney()
-    //{
-
-
-    //    while(gatheredCoins >=10)
-    //    {
-    //        yield return new WaitForSecondsRealtime(0.5f);
-    //        maxCoins -= 10;
-    //        gatheredCoins -= 10;
-    //        
-
-    //    }
-    //    maxCoins = maxCoinHolder;
-    //    Runs++;
-
-    //    if (Runs == maxRuns)
-    //    {
-    //        Runs = 0;
-    //        ParentAgency.GetComponent<AgentManager>().AgentFinished();
-    //    }
-
-
-    //    yield break;
-    //}
 
     void DepositMoney()
     {
@@ -89,12 +58,22 @@ public class RealEstateAgent : MonoBehaviour
             DepositMoney();
 
         }
+        BuggyPathingFix();
     }
 
+    private void Update()
+    {
+        
+    }
     public void AgentBubbleToggle(bool trulse)
     {
         SpeechBubble.GetComponent<SpeechToggle>().ToggleCantFindCoin(trulse);
     }
 
+    void BuggyPathingFix()
+    {
+        GetComponent<Pathfinding.AILerp>().enabled = false;
+        GetComponent<Pathfinding.AILerp>().enabled = true;
+    }
 
 }

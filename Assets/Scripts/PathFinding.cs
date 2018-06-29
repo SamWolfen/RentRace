@@ -15,6 +15,7 @@ public class PathFinding : MonoBehaviour
     public Vector2 testDirection = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
     public float speed;
+    public GameObject TargetMover;
     enum ObstructedSide
     {
         Up = 1, Down = 2, Left = 3, Right = 4
@@ -90,7 +91,10 @@ public class PathFinding : MonoBehaviour
 
 
             ///Move towards
+            //Pather.GetComponent<Pathfinding.AILerp>().destination = Target.transform.position;
             Pather.GetComponent<Pathfinding.AIDestinationSetter>().target = Target.transform;
+            //TargetMover.transform.position = Target.transform.position;
+
         }
 
     }
