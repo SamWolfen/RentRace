@@ -236,6 +236,7 @@ b807d416ed1e4827ed012a75c2ab224e Assembly-CSharp.dll:Pathfinding.DynamicGridObst
 19a2d373917440e586822a94c4b79119 Assembly-CSharp.dll:Pathfinding.Patrol
 cdec2656c1c5ff525ca22639da3d45f4 Assembly-CSharp.dll:Pathfinding.Examples.LightweightRVO
 43cd18af07b442f9a6d47a1d95c9cd94 Assembly-CSharp.dll:.NodeProperties
-dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.HandleMovement
+851bc164346e45b73a5c4ef2536c16b8 Assembly-CSharp.dll:.HandleMovement
 ed4ef1600179e8dac1e3b6eac54fbb12 Assembly-CSharp.dll:Pathfinding.NavmeshCut
 571d48b0e867fa3d5384e382f2fc88d7 Assembly-CSharp.dll:Pathfinding.LocalSpaceGraph
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TurnOnCircleCollider

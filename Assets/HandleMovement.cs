@@ -13,21 +13,25 @@ public class HandleMovement : MonoBehaviour
     Rigidbody2D rb;
     public bool queuedAction = false;
     bool canAction = false;
-    RaycastHit2D[] hit = new RaycastHit2D[4];
+    RaycastHit2D[] hit = new RaycastHit2D[8];
     int i;
-    float movescale = 10;
+    float movescale = 0.5f;
     float vectorscale = 0.15f;
-    float detectionGain = 0.05f;
+    float detectionGain = 0.01f;
     public bool canUp, canDown, canLeft, canRight;
-    
-    enum Move{
+    public bool hitUp, hitDown, hitLeft, hitRight;
+    public bool blocked;
+
+    public enum Move
+    {
         Up = 0,
         Down = 1,
         Left = 2,
         Right = 3
     }
     Move tryMove;
-    Move qMove;
+    Move hitSide;
+    public Move qMove;
 
     // Use this for initialization
     void Start()
@@ -43,87 +47,325 @@ public class HandleMovement : MonoBehaviour
         pos = transform.position;
         Vector2 v = rb.velocity;
 
+
         if (GetComponent<SwipeMovement>().swipeL)
         {
             movement = (Vector2.left);
             tryMove = Move.Left;
+            queuedAction = false;
+
         }
 
         if (GetComponent<SwipeMovement>().swipeR)
         {
             movement = (Vector2.right);
             tryMove = Move.Right;
+            queuedAction = false;
         }
 
         if (GetComponent<SwipeMovement>().swipeU)
         {
             movement = (Vector2.up);
             tryMove = Move.Up;
+            queuedAction = false;
         }
 
         if (GetComponent<SwipeMovement>().swipeD)
         {
             movement = (Vector2.down);
             tryMove = Move.Down;
+            queuedAction = false;
         }
 
 
 
-        
 
 
-        hit[0] = Physics2D.Linecast(pos + new Vector2(1f, 1f) * vectorscale, pos + movement * Time.deltaTime * movescale);
-        hit[1] = Physics2D.Linecast(pos + new Vector2(-1f, 1f) * vectorscale, pos + movement * Time.deltaTime * movescale);
-        hit[2] = Physics2D.Linecast(pos + new Vector2(1f, -1f) * vectorscale, pos + movement * Time.deltaTime * movescale);
-        hit[3] = Physics2D.Linecast(pos + new Vector2(-1f, -1f) * vectorscale, pos + movement * Time.deltaTime * movescale);
+        //top 
+        hit[0] = Physics2D.Linecast(pos + new Vector2(1f, 1f) * vectorscale, pos + Vector2.up * movescale);
+        hit[1] = Physics2D.Linecast(pos + new Vector2(-1f, 1f) * vectorscale, pos + Vector2.up * movescale);
+        //bottom
+        hit[2] = Physics2D.Linecast(pos + new Vector2(1f, -1f) * vectorscale, pos + Vector2.down * movescale);
+        hit[3] = Physics2D.Linecast(pos + new Vector2(-1f, -1f) * vectorscale, pos + Vector2.down * movescale);
+        //left
+        hit[4] = Physics2D.Linecast(pos + new Vector2(-1f, 1f) * vectorscale, pos + Vector2.left * movescale);
+        hit[5] = Physics2D.Linecast(pos + new Vector2(-1f, -1f) * vectorscale, pos + Vector2.left * movescale);
+        // right
+        hit[6] = Physics2D.Linecast(pos + new Vector2(1f, 1f) * vectorscale, pos + Vector2.right * movescale);
+        hit[7] = Physics2D.Linecast(pos + new Vector2(1f, -1f) * vectorscale, pos + Vector2.right * movescale);
 
 
-        Debug.DrawRay(pos + new Vector2(1f, 1f) * vectorscale, movement * Time.deltaTime * movescale);
-        Debug.DrawRay(pos + new Vector2(-1f, 1f) * vectorscale, movement * Time.deltaTime * movescale);
-        Debug.DrawRay(pos + new Vector2(1f, -1f) * vectorscale, movement * Time.deltaTime * movescale);
-        Debug.DrawRay(pos + new Vector2(-1f, -1f) * vectorscale, movement * Time.deltaTime * movescale);
+        Debug.DrawRay(pos + new Vector2(1f, 1f) * vectorscale, Vector2.up * movescale);
+        Debug.DrawRay(pos + new Vector2(-1f, 1f) * vectorscale, Vector2.up * movescale);
 
-        //if (queuedAction)
-        //{
-        //    RaycastHit2D qhit = Physics2D.Linecast(pos, pos + queuedMovement * Time.deltaTime * 10);
-        //    Debug.DrawRay(pos, queuedMovement * Time.deltaTime * 10);
+        Debug.DrawRay(pos + new Vector2(1f, -1f) * vectorscale, Vector2.down * movescale);
+        Debug.DrawRay(pos + new Vector2(-1f, -1f) * vectorscale, Vector2.down * movescale);
 
-        //    if (qhit && qhit.collider.gameObject.tag == "Node")
-        //    {
-        //        if ((Vector2)qhit.collider.gameObject.transform.position == pos)
-        //        {
-        //            movement = queuedMovement;
-        //            queuedAction = false;
-        //            Debug.Log("Trigger Queued action");
-        //        }
-        //    }
-           
-        //}
+        Debug.DrawRay(pos + new Vector2(-1f, 1f) * vectorscale, Vector2.left * movescale);
+        Debug.DrawRay(pos + new Vector2(-1f, -1f) * vectorscale, Vector2.left * movescale);
 
-        i = 0;
-        while (i < 3)
+        Debug.DrawRay(pos + new Vector2(1f, 1f) * vectorscale, Vector2.right * movescale);
+        Debug.DrawRay(pos + new Vector2(1f, -1f) * vectorscale, Vector2.right * movescale);
+
+
+        //Debug.DrawRay(pos + new Vector2(-1f, 1f) * vectorscale, movement * Time.deltaTime * movescale);
+        //Debug.DrawRay(pos + new Vector2(1f, -1f) * vectorscale, movement * Time.deltaTime * movescale);
+        //Debug.DrawRay(pos + new Vector2(-1f, -1f) * vectorscale, movement * Time.deltaTime * movescale);
+
+        if (queuedAction)
         {
-
-            if (hit[i])
-            {
-               // Debug.Log(hit[i].collider.gameObject.tag);
-                if (hit[i].collider.gameObject.tag == "Wall")
-                {
-                    queuedMovement = movement;
-                    qMove = tryMove;
-                    movement = savedMovement;
-                    queuedAction = true;
-                    
-                }
-            }
-
-            if (!hit[i])
-            {
-
-            }
-
-            i++;
+            RaycastHit2D qhit = Physics2D.Linecast(pos, pos + queuedMovement * Time.deltaTime * 10);
+            Debug.DrawRay(pos, queuedMovement * Time.deltaTime * 10);
         }
+
+
+        //trying to improve detection
+        #region Trying to fix detection
+        
+        //top
+
+
+        if (hit[0])
+        {
+            if (hit[0].collider.gameObject.tag == "Wall")
+            {
+                hitUp = true;
+            }
+          
+        }
+       
+        if (hit[1])
+        {
+            if (hit[1].collider.gameObject.tag == "Wall")
+            {
+
+                hitUp = true;
+            }
+            
+        }
+       
+        if(!hit[0] && !hit[1])
+        {
+            hitUp = false;
+        }
+        if (hit[0] && hit[1])
+        { 
+        if(hit[0].collider.gameObject.tag != "Wall" && hit[1].collider.gameObject.tag != "Wall")
+            {
+                hitUp = false;
+            }
+       }
+
+        //botom
+        if (hit[2])
+        {
+            if (hit[2].collider.gameObject.tag == "Wall")
+            {
+                hitDown = true;
+            }
+
+        }
+
+        if (hit[3])
+        {
+            if (hit[3].collider.gameObject.tag == "Wall")
+            {
+
+                hitDown = true;
+            }
+
+        }
+
+        if (!hit[2] && !hit[3])
+        {
+            hitDown = false;
+        }
+        if (hit[2] && hit[3])
+        {
+            if (hit[2].collider.gameObject.tag != "Wall" && hit[3].collider.gameObject.tag != "Wall")
+            {
+                hitUp = false;
+            }
+        }
+
+
+        //left
+        if (hit[4])
+        {
+            if (hit[4].collider.gameObject.tag == "Wall")
+            {
+                hitLeft = true;
+            }
+
+        }
+
+        if (hit[5])
+        {
+            if (hit[5].collider.gameObject.tag == "Wall")
+            {
+
+                hitLeft = true;
+            }
+
+        }
+
+        if (!hit[4] && !hit[5])
+        {
+            hitLeft = false;
+        }
+        if (hit[4] && hit[5])
+        {
+            if (hit[4].collider.gameObject.tag != "Wall" && hit[5].collider.gameObject.tag != "Wall")
+            {
+                hitLeft = false;
+            }
+        }
+
+        //Right
+        if (hit[6])
+        {
+            if (hit[6].collider.gameObject.tag == "Wall")
+            {
+                hitRight = true;
+            }
+
+        }
+
+        if (hit[7])
+        {
+            if (hit[7].collider.gameObject.tag == "Wall")
+            {
+
+                hitRight = true;
+            }
+
+        }
+
+        if (!hit[6] && !hit[7])
+        {
+            hitRight = false;
+        }
+        if (hit[6] && hit[7])
+        {
+            if (hit[6].collider.gameObject.tag != "Wall" && hit[7].collider.gameObject.tag != "Wall")
+            {
+                hitRight = false;
+            }
+        }
+
+
+
+
+        #endregion
+
+        blocked = false;
+
+
+        switch (tryMove)
+        {
+            case Move.Up:
+                if (hit[0])
+                {
+                    if (hit[0].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+
+                }
+
+                if (hit[1])
+                {
+                    if (hit[1].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+                }
+
+
+                break;
+
+            case Move.Down:
+                if (hit[2])
+                {
+                    if (hit[2].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+
+                }
+
+                if (hit[3])
+                {
+                    if (hit[3].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+                }
+
+
+
+
+                break;
+
+            case Move.Left:
+                if (hit[4])
+                {
+                    if (hit[4].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+
+                }
+
+                if (hit[5])
+                {
+                    if (hit[5].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+                }
+
+                break;
+
+            case Move.Right:
+                if (hit[6])
+                {
+                    if (hit[6].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+
+                }
+
+                if (hit[7])
+                {
+                    if (hit[7].collider.gameObject.tag == "Wall")
+                    {
+                        blocked = true;
+                    }
+
+                }
+                break;
+
+        }
+
+
+        if (blocked == true)
+        {
+            queuedMovement = movement;
+            qMove = tryMove;
+            movement = savedMovement;
+            queuedAction = true;
+            blocked = false;
+        }
+
 
         v = movement * Time.deltaTime * speed;
         savedMovement = movement;
@@ -133,9 +375,11 @@ public class HandleMovement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Node")
+
+
+        if (collision.tag == "Node")
         {
-            if (collision.transform.position.x < transform.position.x + detectionGain && collision.transform.position.x > transform.position.x - detectionGain)
+            if ((collision.transform.position.x < transform.position.x + detectionGain && collision.transform.position.x > transform.position.x - detectionGain) || (collision.transform.position.x < transform.position.y + detectionGain && collision.transform.position.x > transform.position.y - detectionGain))
             {
                 Debug.Log("Same Coords");
                 var clear = collision.GetComponent<NodeProperties>().clear;
@@ -151,9 +395,10 @@ public class HandleMovement : MonoBehaviour
                     switch (qMove)
                     {
                         case Move.Up:
-                            if (canUp)
+                            if (canUp && !hitUp)
                             {
                                 canAction = true;
+                                queuedMovement = Vector2.up;
                             }
                             else
                             {
@@ -162,9 +407,10 @@ public class HandleMovement : MonoBehaviour
                             break;
 
                         case Move.Down:
-                            if (canDown)
+                            if (canDown && !hitDown)
                             {
                                 canAction = true;
+                                queuedMovement = Vector2.down;
                             }
                             else
                             {
@@ -173,9 +419,10 @@ public class HandleMovement : MonoBehaviour
                             break;
 
                         case Move.Left:
-                            if (canLeft)
+                            if (canLeft && !hitLeft)
                             {
                                 canAction = true;
+                                queuedMovement = Vector2.left;
                             }
                             else
                             {
@@ -184,9 +431,10 @@ public class HandleMovement : MonoBehaviour
                             break;
 
                         case Move.Right:
-                            if (canRight)
+                            if (canRight && !hitRight)
                             {
                                 canAction = true;
+                                queuedMovement = Vector2.right;
                             }
                             else
                             {
@@ -220,5 +468,5 @@ public class HandleMovement : MonoBehaviour
         }
     }
 
-   
+
 }
