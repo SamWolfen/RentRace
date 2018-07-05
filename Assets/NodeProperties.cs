@@ -27,7 +27,7 @@ public class NodeProperties : MonoBehaviour
     public float cost;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < distScore.Length; i++)
         {

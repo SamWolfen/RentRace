@@ -3790,7 +3790,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 403018714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.1211, y: 3.523, z: 6.926}
+  m_LocalPosition: {x: -0.544, y: 3.572, z: 6.926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1014984956}
@@ -3890,7 +3890,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c62c4f17b409f429114c028e546730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 50
+  queuedAction: 0
+  canUp: 0
+  canDown: 0
+  canLeft: 0
+  canRight: 0
 --- !u!212 &403018723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3942,7 +3947,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 403018714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6385,7 +6390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &695875603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7322,7 +7327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &867809097
 Transform:
   m_ObjectHideFlags: 0
@@ -7649,7 +7654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &878340688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12397,11 +12402,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 867809097}
     m_Modifications:
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: Neighbour.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4060291993887348, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.246
@@ -12432,61 +12432,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4060291993887348, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: otherNodetest
-      value: 
-      objectReference: {fileID: 589680875}
-    - target: {fileID: 4060291993887348, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.1315228
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060291993887348, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.13152286
-      objectReference: {fileID: 0}
-    - target: {fileID: 4060291993887348, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.003653413
-      objectReference: {fileID: 0}
-    - target: {fileID: 58920428381904756, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 58920428381904756, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725549702753642, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
-      propertyPath: m_TagString
-      value: Node
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: clear.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1725549702753642, guid: 3e68a3b6df8277e4ea67ec7e40f91047, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: clear.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: clear.Array.data[3]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114850874828883958, guid: 3e68a3b6df8277e4ea67ec7e40f91047,
-        type: 2}
-      propertyPath: clear.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
