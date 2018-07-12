@@ -473,7 +473,6 @@ namespace Pathfinding {
 			}
 		}
 
-        int i;
 		protected virtual void Update () {
 			if (shouldRecalculatePath) SearchPath();
 			if (canMove) {
@@ -481,12 +480,6 @@ namespace Pathfinding {
 				Quaternion nextRotation;
 				MovementUpdate(Time.deltaTime, out nextPosition, out nextRotation);
 				FinalizeMovement(nextPosition, nextRotation);
-                i++;
-                if (i > 30)
-                {
-                    SearchPath();
-                    i = 0;
-                }
 			}
 		}
 
