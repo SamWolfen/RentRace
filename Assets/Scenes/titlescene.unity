@@ -293,7 +293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -193.2, y: 41.300003}
+  m_AnchoredPosition: {x: -193.20001, y: 41.30002}
   m_SizeDelta: {x: 357.5, y: 62.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &416307239
@@ -362,7 +362,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2017193, g: 0.553074, b: 0.6691177, a: 0}
+  m_BackGroundColor: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1847,7 +1847,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eadaa72588c83f04f9a32536240c9068, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3fc2b53a339861145919223cdc43c231, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
