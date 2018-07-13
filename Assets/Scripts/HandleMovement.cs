@@ -15,8 +15,8 @@ public class HandleMovement : MonoBehaviour
     bool canAction = false;
     RaycastHit2D[] hit = new RaycastHit2D[8];
     int i;
-    float movescale = 0.2f;
-    float vectorscale = 0.15f;
+    float movescale = 0.25f;
+    float vectorscale = 0.145f;
     float detectionGain = 0.01f;
     public bool canUp, canDown, canLeft, canRight;
     public bool hitUp, hitDown, hitLeft, hitRight;
@@ -377,6 +377,7 @@ public class HandleMovement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //if pos plus vector is moving away from center of node exceute?
 
 
         if (collision.tag == "Node")
@@ -401,6 +402,7 @@ public class HandleMovement : MonoBehaviour
                             {
                                 canAction = true;
                                 queuedMovement = Vector2.up;
+
                             }
                             else
                             {

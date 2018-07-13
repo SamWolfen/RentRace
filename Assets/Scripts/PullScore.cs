@@ -22,15 +22,15 @@ public class PullScore : MonoBehaviour {
         switch(this.name)
         {
             case "ScoreDisplay":
-                text.text = "Total Money: " + scores.Score;
+                text.text = "Total Money: \n" + scores.Score;
                 break;
 
             case "CashOnHandDisplay":
-                text.text = "Wallet: " + scores.Cash;
+                text.text = "Wallet: \n" + scores.Cash;
                 break;
 
             case "CashInBankDisplay":
-                text.text = "Bank: " + scores.Bank;
+                text.text = "Bank: \n" + scores.Bank;
                 break;
 
         }
