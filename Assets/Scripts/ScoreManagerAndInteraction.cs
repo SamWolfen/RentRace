@@ -22,6 +22,8 @@ public class ScoreManagerAndInteraction : MonoBehaviour
     public GameObject ProgressBarGreen;
     public GameObject ProgressBarGrey;
     public GameObject CollidedObject;
+    public GameObject InteractingObject;
+
 
 
     private IEnumerator buildingCoroutine;
@@ -54,6 +56,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         Debug.Log(collision.name);
         progressTimer = 0;
         CollidedObject = collision.gameObject;
+
         bool valid = false;
 
         //check what we've hit and then call the relavent function
@@ -114,6 +117,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         if (collision.tag != "Coin" && valid == true)
         {
             Interacting = true;
+            InteractingObject = collision.gameObject;
             StartCoroutine(BuildingAction(collision.tag));
         }
 
@@ -121,7 +125,10 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Interacting = false;
+        if (Interacting == true && (collision.tag == "Bank" || collision.tag == "Property" || collision.tag == "Agency" ))
+        {
+            Interacting = false;
+        }
     }
 
 
@@ -165,8 +172,8 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
                     //update values
                     AddUpScore();
-                    CollidedObject.tag = "Purchased";
-                    CollidedObject.GetComponent<PropertyProperties>().Purchased();
+                    InteractingObject.tag = "Purchased";
+                    InteractingObject.GetComponent<PropertyProperties>().Purchased();
 
                 }
                 else
@@ -196,7 +203,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
                     //update values
                     AddUpScore();
-                    CollidedObject.GetComponent<AgentManager>().HireAgent();
+                    InteractingObject.GetComponent<AgentManager>().HireAgent();
 
                 }
                 else
@@ -228,7 +235,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
                     //update values
                     AddUpScore();
-                    CollidedObject.GetComponent<PropertyProperties>().damageType = PropertyProperties.DamageType.None;
+                    InteractingObject.GetComponent<PropertyProperties>().damageType = PropertyProperties.DamageType.None;
 
                 }
                 else

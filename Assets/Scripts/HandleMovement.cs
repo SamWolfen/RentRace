@@ -15,12 +15,14 @@ public class HandleMovement : MonoBehaviour
     bool canAction = false;
     RaycastHit2D[] hit = new RaycastHit2D[8];
     int i;
-    float movescale = 0.5f;
+    float movescale = 0.2f;
     float vectorscale = 0.15f;
     float detectionGain = 0.01f;
     public bool canUp, canDown, canLeft, canRight;
     public bool hitUp, hitDown, hitLeft, hitRight;
     public bool blocked;
+
+
 
     public enum Move
     {
