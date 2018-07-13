@@ -224,6 +224,15 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity/Unity 2017.4.1f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Pathfinding.ClipperLib">
+      <HintPath>Assets/AstarPathfindingProject/Plugins/Clipper/Pathfinding.ClipperLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Poly2Tri">
+      <HintPath>Assets/AstarPathfindingProject/Plugins/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
@@ -235,15 +244,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Pathfinding.ClipperLib">
-      <HintPath>Assets/AstarPathfindingProject/Plugins/Clipper/Pathfinding.ClipperLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Pathfinding.Poly2Tri">
-      <HintPath>Assets/AstarPathfindingProject/Plugins/Poly2Tri/Pathfinding.Poly2Tri.dll</HintPath>
-    </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +292,7 @@
     <None Include="Assets\AstarPathfindingProject\Readme.txt" />
     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
     <None Include="Assets\AstarPathfindingProject\link.xml" />
+    <None Include="Assets\Fonts\upheaval.txt" />
     <None Include="Assets\Plugins\SimpleInput\Credits.txt" />
     <None Include="Assets\Plugins\SimpleInput\README.txt" />
   </ItemGroup>

@@ -13,14 +13,12 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -417,22 +415,22 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
-    <Compile Include="Assets\HandleMovement.cs" />
-    <Compile Include="Assets\MenuButtonBehavior.cs" />
-    <Compile Include="Assets\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
-    <Compile Include="Assets\Scripts\DijkstraPathing.cs" />
+    <Compile Include="Assets\Scripts\HandleMovement.cs" />
+    <Compile Include="Assets\Scripts\MenuButtonBehavior.cs" />
+    <Compile Include="Assets\Scripts\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
+    <Compile Include="Assets\Scripts\PlaySound.cs" />
     <Compile Include="Assets\Scripts\ProgressBarManager.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
     <Compile Include="Assets\Scripts\PullScore.cs" />
     <Compile Include="Assets\Scripts\RealEstateAgent.cs" />
     <Compile Include="Assets\Scripts\ScoreManagerAndInteraction.cs" />
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
-    <Compile Include="Assets\SwipeMovement.cs" />
-    <Compile Include="Assets\TurnOnCircleCollider.cs" />
+    <Compile Include="Assets\Scripts\SwipeMovement.cs" />
+    <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
@@ -449,6 +447,7 @@
     <None Include="Assets\AstarPathfindingProject\Readme.txt" />
     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
     <None Include="Assets\AstarPathfindingProject\link.xml" />
+    <None Include="Assets\Fonts\upheaval.txt" />
     <None Include="Assets\Plugins\SimpleInput\Credits.txt" />
     <None Include="Assets\Plugins\SimpleInput\README.txt" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public enum ButtonOption
 {
-    Play, Credits, Quit, Highscores 
+    Play, Credits, Quit, Highscores, Pause 
 }
 
 public class MenuButtonBehavior : MonoBehaviour {
