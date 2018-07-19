@@ -21,7 +21,10 @@ public class HandleMovement : MonoBehaviour
     public bool canUp, canDown, canLeft, canRight;
     public bool hitUp, hitDown, hitLeft, hitRight;
     public bool blocked;
+    public GameObject LastNode;
+    int nodeNum;
 
+    GameObject[] NextNode;
 
 
     public enum Move
@@ -40,11 +43,16 @@ public class HandleMovement : MonoBehaviour
     {
         movement = new Vector2(0, 0);
         rb = gameObject.GetComponent<Rigidbody2D>();
+        nodeNum = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (LastNode)
+        {
+            NextNode = LastNode.GetComponent<NodeProperties>().Neighbour;
+        }
 
         pos = transform.position;
         Vector2 v = rb.velocity;
@@ -56,6 +64,8 @@ public class HandleMovement : MonoBehaviour
             tryMove = Move.Left;
             queuedAction = false;
 
+            nodeNum = 2;
+            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeR)
@@ -63,6 +73,9 @@ public class HandleMovement : MonoBehaviour
             movement = (Vector2.right);
             tryMove = Move.Right;
             queuedAction = false;
+
+            nodeNum = 3;
+            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeU)
@@ -70,6 +83,9 @@ public class HandleMovement : MonoBehaviour
             movement = (Vector2.up);
             tryMove = Move.Up;
             queuedAction = false;
+
+            nodeNum = 0;
+            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeD)
@@ -77,9 +93,17 @@ public class HandleMovement : MonoBehaviour
             movement = (Vector2.down);
             tryMove = Move.Down;
             queuedAction = false;
+
+            nodeNum = 1;
+            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
-
+        if (LastNode && NextNode[nodeNum])
+        {
+            Debug.DrawRay(pos, NextNode[nodeNum].transform.position - transform.position, Color.yellow, 1f);
+            movement = NextNode[nodeNum].transform.position - transform.position;
+            movement = movement.normalized;
+        }
 
 
 
@@ -122,8 +146,8 @@ public class HandleMovement : MonoBehaviour
 
 
         //trying to improve detection
-        #region Trying to fix detection
-        
+        #region Trying to fix wall detection
+
         //top
 
 
@@ -133,9 +157,9 @@ public class HandleMovement : MonoBehaviour
             {
                 hitUp = true;
             }
-          
+
         }
-       
+
         if (hit[1])
         {
             if (hit[1].collider.gameObject.tag == "Wall")
@@ -143,20 +167,20 @@ public class HandleMovement : MonoBehaviour
 
                 hitUp = true;
             }
-            
+
         }
-       
-        if(!hit[0] && !hit[1])
+
+        if (!hit[0] && !hit[1])
         {
             hitUp = false;
         }
         if (hit[0] && hit[1])
-        { 
-        if(hit[0].collider.gameObject.tag != "Wall" && hit[1].collider.gameObject.tag != "Wall")
+        {
+            if (hit[0].collider.gameObject.tag != "Wall" && hit[1].collider.gameObject.tag != "Wall")
             {
                 hitUp = false;
             }
-       }
+        }
 
         //botom
         if (hit[2])
@@ -260,9 +284,10 @@ public class HandleMovement : MonoBehaviour
 
         #endregion
 
+
+        //determine if the player is blocked
         blocked = false;
-
-
+        
         switch (tryMove)
         {
             case Move.Up:
@@ -382,9 +407,11 @@ public class HandleMovement : MonoBehaviour
 
         if (collision.tag == "Node")
         {
+            LastNode = collision.gameObject;
+
             if ((collision.transform.position.x < transform.position.x + detectionGain && collision.transform.position.x > transform.position.x - detectionGain) || (collision.transform.position.x < transform.position.y + detectionGain && collision.transform.position.x > transform.position.y - detectionGain))
             {
-                Debug.Log("Same Coords");
+                //Debug.Log("Same Coords");
                 var clear = collision.GetComponent<NodeProperties>().clear;
 
                 canUp = clear[0];
