@@ -41,6 +41,7 @@ public class PathFinding : MonoBehaviour
     {
         randomHolder = Random.Range(1, 4);
         StartCoroutine(AIPathFinding(randomHolder));
+
         //StartCoroutine(Refiner());
     }
 

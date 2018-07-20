@@ -11,7 +11,7 @@ public class RealEstateAgent : MonoBehaviour
     public int maxCoins;
     public GameObject Player;
     public GameObject ParentAgency;
-public bool isActive;
+    public bool isActive;
 
 
 
@@ -21,9 +21,10 @@ public bool isActive;
     {
         //StartCoroutine(FixPathing());
         //BuggyPathingFix();
+        isActive = false;
     }
 
-  
+
 
 
     void DepositMoney()
@@ -57,13 +58,26 @@ public bool isActive;
 
     private void Update()
     {
-        
+        if (isActive)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<BoxCollider2D>().enabled = true;
+
+
+
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<PathFinding>().Target = GetComponent<PathFinding>().FindNearestTarget(GetComponent<PathFinding>().Pather, 1, "HiredAgency");
+        }
     }
     public void AgentBubbleToggle(bool trulse)
     {
         SpeechBubble.GetComponent<SpeechToggle>().ToggleCantFindCoin(trulse);
     }
 
-    
+
 
 }

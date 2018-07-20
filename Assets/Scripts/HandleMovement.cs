@@ -65,7 +65,7 @@ public class HandleMovement : MonoBehaviour
             queuedAction = false;
 
             nodeNum = 2;
-            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
+            //Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeR)
@@ -75,7 +75,7 @@ public class HandleMovement : MonoBehaviour
             queuedAction = false;
 
             nodeNum = 3;
-            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
+            //Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeU)
@@ -85,7 +85,7 @@ public class HandleMovement : MonoBehaviour
             queuedAction = false;
 
             nodeNum = 0;
-            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
+            //Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (GetComponent<SwipeMovement>().swipeD)
@@ -95,7 +95,7 @@ public class HandleMovement : MonoBehaviour
             queuedAction = false;
 
             nodeNum = 1;
-            Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
+            //Debug.Log(Vector2.MoveTowards(transform.position, NextNode[nodeNum].transform.position, 1f));
         }
 
         if (LastNode && NextNode[nodeNum])

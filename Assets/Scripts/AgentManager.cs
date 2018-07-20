@@ -27,7 +27,7 @@ public class AgentManager : MonoBehaviour {
         Agent.transform.position = transform.position;
         tag = "HiredAgency";
         runs = 0;
-        Agent.GetComponent<SpriteRenderer>().enabled = true;
+        
         Agent.GetComponent<RealEstateAgent>().isActive = true;
     }
 
@@ -36,7 +36,7 @@ public class AgentManager : MonoBehaviour {
 
         if (runs >= maxRuns)
         {
-            Agent.GetComponent<SpriteRenderer>().enabled = false;
+            
             Agent.GetComponent<RealEstateAgent>().isActive = false;
             tag = "Agency";
         }
