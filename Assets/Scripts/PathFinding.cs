@@ -16,6 +16,7 @@ public class PathFinding : MonoBehaviour
     public Vector2 direction = new Vector2(0, 0);
     public float speed;
     public GameObject TargetMover;
+   
     enum ObstructedSide
     {
         Up = 1, Down = 2, Left = 3, Right = 4
@@ -51,59 +52,63 @@ public class PathFinding : MonoBehaviour
 
         while (looping == true)
         {
-            yield return new WaitForEndOfFrame();
+            
 
-            ///Find Nearest Object
-            ///
-            switch (Pather.tag)
-            {
-                case "Enemy":
-                    Target = FindNearestTarget(Pather, 1, "Player");
-                    break;
-                case "Agent":
+                yield return new WaitForEndOfFrame();
 
-                    if (Pather.GetComponent<RealEstateAgent>().gatheredCoins >= Pather.GetComponent<RealEstateAgent>().maxCoins)
+                ///Find Nearest Object
+                ///
+                switch (Pather.tag)
+                {
+                    case "Enemy":
+                        Target = FindNearestTarget(Pather, 1, "Player");
+                        break;
+                    case "Agent":
+
+                    if (Pather.GetComponent<RealEstateAgent>().isActive)
                     {
-                        Target = FindNearestTarget(Pather, 1, "HiredAgency");
-                    }
-                    else
-                    {
-                        try
-                        {
-                            Target = FindNearestTarget(Pather, 1, "Coin");
-                            Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(false);
-                        }
-                        catch
-                        {
-                            Debug.Log("No Coins Found");
-                        }
 
-                        if (Target == Pather)
+                        if (Pather.GetComponent<RealEstateAgent>().gatheredCoins >= Pather.GetComponent<RealEstateAgent>().maxCoins)
                         {
-                            Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(true);
                             Target = FindNearestTarget(Pather, 1, "HiredAgency");
                         }
+                        else
+                        {
+                            try
+                            {
+                                Target = FindNearestTarget(Pather, 1, "Coin");
+                                Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(false);
+                            }
+                            catch
+                            {
+                                Debug.Log("No Coins Found");
+                            }
 
+                            if (Target == Pather)
+                            {
+                                Pather.GetComponent<RealEstateAgent>().AgentBubbleToggle(true);
+                                Target = FindNearestTarget(Pather, 1, "HiredAgency");
+                            }
+
+                        }
                     }
-                    break;
-            }
+                        break;
+                }
 
 
 
-            ///Move towards
-            //Pather.GetComponent<Pathfinding.AILerp>().destination = Target.transform.position;
-            Pather.GetComponent<Pathfinding.AIDestinationSetter>().target = Target.transform;
-            //TargetMover.transform.position = Target.transform.position;
+                ///Move towards
+                //Pather.GetComponent<Pathfinding.AILerp>().destination = Target.transform.position;
+                Pather.GetComponent<Pathfinding.AIDestinationSetter>().target = Target.transform;
+                //TargetMover.transform.position = Target.transform.position;
 
+            
         }
 
     }
 
     void Pursue(GameObject target)
     {
-
-
-
         transform.Translate(direction * Time.deltaTime * speed);
         return;
     }
@@ -117,8 +122,6 @@ public class PathFinding : MonoBehaviour
         {
 
             GameObject ReturnedTarget = GameObject.FindGameObjectWithTag(specificTag);
-
-
 
 
             foreach (GameObject TestObject in potentialTargets)

@@ -11,7 +11,7 @@ public class RealEstateAgent : MonoBehaviour
     public int maxCoins;
     public GameObject Player;
     public GameObject ParentAgency;
-
+public bool isActive;
 
 
 
@@ -19,18 +19,11 @@ public class RealEstateAgent : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(FixPathing());
+        //StartCoroutine(FixPathing());
         //BuggyPathingFix();
     }
 
-   IEnumerator FixPathing()
-    {
-        while (true)
-        {
-            yield return new WaitForSecondsRealtime (0.5f);
-            GetComponent<Pathfinding.AILerp>().SearchPath();
-        }
-    }
+  
 
 
     void DepositMoney()
@@ -59,6 +52,7 @@ public class RealEstateAgent : MonoBehaviour
 
         }
         //BuggyPathingFix();
+        //GetComponent<Pathfinding.AILerp>().SearchPath();
     }
 
     private void Update()
@@ -70,10 +64,6 @@ public class RealEstateAgent : MonoBehaviour
         SpeechBubble.GetComponent<SpeechToggle>().ToggleCantFindCoin(trulse);
     }
 
-    void BuggyPathingFix()
-    {
-        GetComponent<Pathfinding.AILerp>().enabled = false;
-        GetComponent<Pathfinding.AILerp>().enabled = true;
-    }
+    
 
 }

@@ -7,6 +7,7 @@ public class AgentManager : MonoBehaviour {
     public float Price;
     public int runs = 0;
     int maxRuns = 3;
+    
 
 
     // Use this for initialization
@@ -26,6 +27,8 @@ public class AgentManager : MonoBehaviour {
         Agent.transform.position = transform.position;
         tag = "HiredAgency";
         runs = 0;
+        Agent.GetComponent<SpriteRenderer>().enabled = true;
+        Agent.GetComponent<RealEstateAgent>().isActive = true;
     }
 
     public void AgentFinished()
@@ -33,7 +36,8 @@ public class AgentManager : MonoBehaviour {
 
         if (runs >= maxRuns)
         {
-            Agent.SetActive(false);
+            Agent.GetComponent<SpriteRenderer>().enabled = false;
+            Agent.GetComponent<RealEstateAgent>().isActive = false;
             tag = "Agency";
         }
 
