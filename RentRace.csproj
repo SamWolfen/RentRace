@@ -468,6 +468,7 @@
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\HandleMovement.cs" />
     <Compile Include="Assets\Scripts\MenuButtonBehavior.cs" />
+    <Compile Include="Assets\Scripts\Mugger.cs" />
     <Compile Include="Assets\Scripts\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PlaySound.cs" />
