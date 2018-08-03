@@ -481,6 +481,7 @@
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
     <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />
+    <Compile Include="Assets\ZeroProperties.cs" />
     <Compile Include="Assets\ZeroSpawner.cs" />
   </ItemGroup>
   <ItemGroup>

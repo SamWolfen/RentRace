@@ -12,6 +12,8 @@ public class ZeroSpawner : MonoBehaviour {
     float x;
     float y;
     Vector2 spawnPoint;
+    public bool allZerosCollected;
+    public int zerosCollected;
 
 
 	// Use this for initialization
@@ -20,11 +22,15 @@ public class ZeroSpawner : MonoBehaviour {
         ZeroOne.SetActive(false);
         ZeroTwo.SetActive(false);
         ZeroThree.SetActive(false);
+        zerosCollected = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (zerosCollected == 3)
+        {
+            allZerosCollected = true;
+        }
 	}
 
     public void SpawnZero()

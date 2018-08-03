@@ -35,15 +35,13 @@ public class MuggerSpawner : MonoBehaviour {
             TripleZeroSpawn();
             if (timer >= spawnCounter * 10 + 15)
             {
-                Mugger.GetComponent<Mugger>().isActive = false;
-                ResetValues();
+               // Mugger.GetComponent<Mugger>().isActive = false;
+                //ResetValues();
                 
             }
             else
             {
                 timer += Time.deltaTime * 1.0f;
-                
-
             }
         }
         else
