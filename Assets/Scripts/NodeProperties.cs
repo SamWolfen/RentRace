@@ -41,6 +41,11 @@ public class NodeProperties : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {

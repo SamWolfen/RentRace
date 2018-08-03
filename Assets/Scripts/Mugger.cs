@@ -8,6 +8,7 @@ public class Mugger : MonoBehaviour {
     public bool isActivated;
     public GameObject Player;
     public GameObject MuggerSpawn;
+    
 
     // Use this for initialization
     void Start () {
@@ -39,6 +40,9 @@ public class Mugger : MonoBehaviour {
     //activates and deactivates object. consider this as a start/stop funciton that deals with all the nessicary values as actually deactivating the object is bad practice.
     void Activate(bool ActDe)
     {
+        MuggerSpawn.GetComponent<MuggerSpawner>().timer = 0;
+
+
        //if actde is true then we are activationg the object, if not then we are deactivating the object
         if (ActDe)
         {

@@ -469,6 +469,7 @@
     <Compile Include="Assets\Scripts\HandleMovement.cs" />
     <Compile Include="Assets\Scripts\MenuButtonBehavior.cs" />
     <Compile Include="Assets\Scripts\Mugger.cs" />
+    <Compile Include="Assets\Scripts\MuggerSpawner.cs" />
     <Compile Include="Assets\Scripts\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PlaySound.cs" />
@@ -480,6 +481,7 @@
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
     <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />
+    <Compile Include="Assets\ZeroSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
