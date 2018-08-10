@@ -6,17 +6,20 @@ public class PoliceBehavior : MonoBehaviour {
     public bool isActive;
     public bool isDeactivated;
     public bool isActivated;
+    Vector2 pos;
 
     // Use this for initialization
     void Start () {
         Activate(false);
+        pos = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (isActive)
         {
-
+            //
+            Vector2.MoveTowards(transform.position, new Vector2 (0, 0), 1);
         }
 		
 	}
@@ -27,19 +30,24 @@ public class PoliceBehavior : MonoBehaviour {
         if (ActDe)
         {
 
-            isActivated = true;
-            isDeactivated = false;
-            GetComponent<SpriteRenderer>().enabled = true;
-            GetComponent<BoxCollider2D>().enabled = true;
+            isActivated = ActDe;
+            isActive = ActDe;
+            isDeactivated = !ActDe;
+            GetComponent<SpriteRenderer>().enabled = ActDe;
+            GetComponent<BoxCollider2D>().enabled = ActDe;
+            GetComponentInChildren<SpriteRenderer>().enabled = ActDe;
 
         }
         else
         {
-            isActivated = false;
-            isDeactivated = true;
-            GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<BoxCollider2D>().enabled = false;
+            isActivated = ActDe;
+            isDeactivated = !ActDe;
+            GetComponent<SpriteRenderer>().enabled = ActDe;
+            GetComponent<BoxCollider2D>().enabled = ActDe;
+            GetComponentInChildren<SpriteRenderer>().enabled = ActDe;
             //GetComponent<Pathfinding.AIDestinationSetter>().target = MuggerSpawn.transform;
+            //reset positon
+            transform.position = pos;
 
         }
     }

@@ -26,7 +26,7 @@ public class PoliceLightColours : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //if (turnRed)
         //{
