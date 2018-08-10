@@ -13,6 +13,7 @@ public class MuggerSpawner : MonoBehaviour {
     public float timer;
     float spawnTimer;
     float rand;
+    public bool toggleMugger;
 
     // Use this for initialization
     void Start () {
@@ -25,11 +26,20 @@ public class MuggerSpawner : MonoBehaviour {
         //adjust mugger state based on timer
         //rand = Random.Range(0f, 10f);
         MuggerLogic();
+
+        
         
 
     }
 
     void MuggerLogic() {
+
+        if (toggleMugger)
+        {
+            toggleMugger = false;
+            timer = 100;
+        }
+
         if (Mugger.GetComponent<Mugger>().isActive)
         {
             TripleZeroSpawn();

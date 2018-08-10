@@ -463,6 +463,7 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
+    <Compile Include="Assets\PoliceBehavior.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
@@ -473,6 +474,7 @@
     <Compile Include="Assets\Scripts\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PlaySound.cs" />
+    <Compile Include="Assets\Scripts\PoliceLightColours.cs" />
     <Compile Include="Assets\Scripts\ProgressBarManager.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
     <Compile Include="Assets\Scripts\PullScore.cs" />

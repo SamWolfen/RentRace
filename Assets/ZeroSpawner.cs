@@ -30,6 +30,7 @@ public class ZeroSpawner : MonoBehaviour {
 		if (zerosCollected == 3)
         {
             allZerosCollected = true;
+            //call the police
         }
 	}
 
