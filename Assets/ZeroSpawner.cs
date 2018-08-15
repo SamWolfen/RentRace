@@ -31,6 +31,7 @@ public class ZeroSpawner : MonoBehaviour {
         {
             allZerosCollected = true;
             //call the police
+
         }
 	}
 

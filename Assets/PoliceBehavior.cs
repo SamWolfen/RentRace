@@ -8,6 +8,7 @@ public class PoliceBehavior : MonoBehaviour {
     public bool isActivated;
     Vector2 pos;
 
+
     // Use this for initialization
     void Start () {
         Activate(false);
