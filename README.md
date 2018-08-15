@@ -1,5 +1,5 @@
 # RentRace Design Overview
-A Pacman-inspired game with Incremental game elements.
+A Pacman-inspired game with incremental game elements.
 # Pitch
 RentRace is spin on an arcade classic for mobile platforms, introducing new elements of resource and property management to the game. You play as an Investor, building up capital and then investing in property. As you navigate the level collecting coins, you will need to avoid hazards until you can safely purchase property, after which you can collect Rent from the Tenants and maintain the property to keep the Tenants happy.
 # Overview
