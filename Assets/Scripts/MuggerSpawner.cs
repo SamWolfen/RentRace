@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MuggerSpawner : MonoBehaviour {
+public class MuggerSpawner : MonoBehaviour
+{
 
     int spawnCounter = 0;
-   public float zeroTimer;
+    public float zeroTimer;
     public GameObject Mugger;
     public GameObject TripleZero;
     public GameObject Police;
@@ -15,39 +16,64 @@ public class MuggerSpawner : MonoBehaviour {
     float rand;
     public bool toggleMugger;
 
+    public enum DiffLevel
+    {
+        Easy, Medium, Hard
+    }
+
+    public DiffLevel difficulty;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Mugger.GetComponent<Mugger>().isActive = false;
+
+
         ResetValues();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         //adjust mugger state based on timer
         //rand = Random.Range(0f, 10f);
         MuggerLogic();
 
-        
-        
+
+
 
     }
 
-    void MuggerLogic() {
+    void MuggerLogic()
+    {
 
         if (toggleMugger)
         {
+            //purely for testing
             toggleMugger = false;
             timer = 100;
         }
 
         if (Mugger.GetComponent<Mugger>().isActive)
         {
-            TripleZeroSpawn();
+            switch (difficulty)
+            {
+                case DiffLevel.Easy:
+
+                    break;
+
+                case DiffLevel.Medium:
+                    TripleZeroSpawn();
+
+                    break;
+            }
+
+
             if (timer >= spawnCounter * 10 + 15)
             {
-               // Mugger.GetComponent<Mugger>().isActive = false;
+                // Mugger.GetComponent<Mugger>().isActive = false;
                 //ResetValues();
-                
+
             }
             else
             {
@@ -71,11 +97,12 @@ public class MuggerSpawner : MonoBehaviour {
 
     void TripleZeroSpawn()
     {
-       if (zeroTimer<timer)
+        if (zeroTimer < timer)
         {
             zeroTimer += 2;
             TripleZero.GetComponent<ZeroSpawner>().spawnCounter++;
             TripleZero.GetComponent<ZeroSpawner>().SpawnZero();
+
         }
     }
 

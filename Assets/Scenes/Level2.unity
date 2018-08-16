@@ -625,6 +625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 83313175}
   - component: {fileID: 83313176}
+  - component: {fileID: 83313177}
   m_Layer: 0
   m_Name: Police
   m_TagString: Untagged
@@ -692,6 +693,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &83313177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 83313174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285dbc9aaecd8ce41a150620992f7dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZeroOne: {fileID: 0}
+  ZeroTwo: {fileID: 0}
+  ZeroThree: {fileID: 0}
+  spawnCounter: 0
+  allZerosCollected: 0
+  zerosCollected: 0
 --- !u!4 &87541232
 Transform:
   m_ObjectHideFlags: 0
@@ -13363,6 +13381,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114345533996967462, guid: 44398d327732fa542ab8f27192d57031,
+        type: 2}
+      propertyPath: NextScene
+      value: Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44398d327732fa542ab8f27192d57031, type: 2}
   m_IsPrefabAsset: 0
@@ -13630,7 +13653,7 @@ MonoBehaviour:
   zeroTimer: 0
   Mugger: {fileID: 695875602}
   TripleZero: {fileID: 1385722561}
-  Police: {fileID: 0}
+  Police: {fileID: 83313174}
   timer: 0
   toggleMugger: 0
 --- !u!4 &1570595145 stripped

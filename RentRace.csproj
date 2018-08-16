@@ -472,6 +472,7 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
+    <Compile Include="Assets\LossCondition.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\AStarLoopPathing.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
@@ -495,7 +496,7 @@
     <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />
     <Compile Include="Assets\Scripts\WinCondition.cs" />
     <Compile Include="Assets\Scripts\ZeroProperties.cs" />
-    <Compile Include="Assets\Scripts\ZeroSpawner.cs" />
+    <Compile Include="Assets\ZeroSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
