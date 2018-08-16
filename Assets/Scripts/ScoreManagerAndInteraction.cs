@@ -8,6 +8,11 @@ using UnityEngine.UI;
 
 public class ScoreManagerAndInteraction : MonoBehaviour
 {
+    public AudioClip PickUpCoinClip;
+    public AudioSource PickUpCoinSource;
+
+
+
     public float Score = 0;
     public float Cash = 0;
     public float Bank = 0;
@@ -44,6 +49,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         Bank = 0;
 
         StartCoroutine(BankInterest());
+        PickUpCoinSource.clip = PickUpCoinClip;
 
     }
 
@@ -146,6 +152,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         //increases score
         Cash = Cash + 10;
         Score = Cash + Bank;
+        PickUpCoinSource.Play();
     }
 
     private void Interact(string BuildingType)
