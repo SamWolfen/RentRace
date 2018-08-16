@@ -16,6 +16,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
     //win/lose
     public GameObject WinController;
+    public GameObject MuggerSpawnerObj;
 
 
     //interaction
@@ -116,7 +117,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
 
             case "Enemy":
                 WinController.GetComponent<LossCondition>().hits++;
-
+                collision.gameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = MuggerSpawnerObj.transform;
 
                 break;
 
