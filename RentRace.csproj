@@ -292,6 +292,10 @@
       <Project>{9847B4F9-EC6C-7581-08A9-0D60385D2817}</Project>
       <Name>RentRace.Plugins</Name>
     </ProjectReference>
+    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
+      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
+      <Name>UnityEditor.StandardEvents</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
       <Project>{3A848AB7-9891-EDDA-D555-BF184C2F81F4}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
@@ -304,13 +308,8 @@
       <Project>{07A21C90-D344-AE1A-8456-9910C203B41A}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.StandardEvents.csproj">
-      <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
-      <Name>UnityEditor.StandardEvents</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AStarLoopPathing.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Behaviors\AIDestinationSetter.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Behaviors\Patrol.cs" />
     <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
@@ -473,8 +472,8 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
-    <Compile Include="Assets\PoliceBehavior.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
+    <Compile Include="Assets\Scripts\AStarLoopPathing.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\HandleMovement.cs" />
@@ -484,6 +483,7 @@
     <Compile Include="Assets\Scripts\NodeProperties.cs" />
     <Compile Include="Assets\Scripts\PathFinding.cs" />
     <Compile Include="Assets\Scripts\PlaySound.cs" />
+    <Compile Include="Assets\Scripts\PoliceBehavior.cs" />
     <Compile Include="Assets\Scripts\PoliceLightColours.cs" />
     <Compile Include="Assets\Scripts\ProgressBarManager.cs" />
     <Compile Include="Assets\Scripts\PropertyProperties.cs" />
@@ -493,9 +493,9 @@
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
     <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />
-    <Compile Include="Assets\WinCondition.cs" />
-    <Compile Include="Assets\ZeroProperties.cs" />
-    <Compile Include="Assets\ZeroSpawner.cs" />
+    <Compile Include="Assets\Scripts\WinCondition.cs" />
+    <Compile Include="Assets\Scripts\ZeroProperties.cs" />
+    <Compile Include="Assets\Scripts\ZeroSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.cginc" />
