@@ -310,6 +310,11 @@ public class HandleMovement : MonoBehaviour
 
                 }
 
+                if (blocked == false)
+                {
+                    GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Up;
+                }
+
 
                 break;
 
@@ -333,7 +338,10 @@ public class HandleMovement : MonoBehaviour
 
                 }
 
-
+                if (blocked == false)
+                {
+                    GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Down;
+                }
 
 
                 break;
@@ -357,6 +365,10 @@ public class HandleMovement : MonoBehaviour
                     }
 
                 }
+                if (blocked == false)
+                {
+                    GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Left;
+                }
 
                 break;
 
@@ -379,6 +391,10 @@ public class HandleMovement : MonoBehaviour
                     }
 
                 }
+                if (blocked == false)
+                {
+                    GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Right;
+                }
                 break;
 
         }
@@ -393,10 +409,12 @@ public class HandleMovement : MonoBehaviour
             blocked = false;
         }
 
-
+        GetComponent<PlayerSprite>().RefreshSprite();
         v = movement * Time.deltaTime * speed;
         savedMovement = movement;
         rb.velocity = v;
+
+
     }
 
 
@@ -429,6 +447,7 @@ public class HandleMovement : MonoBehaviour
                             {
                                 canAction = true;
                                 queuedMovement = Vector2.up;
+                                GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Up;
 
                             }
                             else
@@ -442,6 +461,7 @@ public class HandleMovement : MonoBehaviour
                             {
                                 canAction = true;
                                 queuedMovement = Vector2.down;
+                                GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Down;
                             }
                             else
                             {
@@ -454,6 +474,7 @@ public class HandleMovement : MonoBehaviour
                             {
                                 canAction = true;
                                 queuedMovement = Vector2.left;
+                                GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Left;
                             }
                             else
                             {
@@ -466,6 +487,7 @@ public class HandleMovement : MonoBehaviour
                             {
                                 canAction = true;
                                 queuedMovement = Vector2.right;
+                                GetComponent<PlayerSprite>().facing = PlayerSprite.Facing.Right;
                             }
                             else
                             {
@@ -480,6 +502,7 @@ public class HandleMovement : MonoBehaviour
                         movement = queuedMovement;
                         queuedAction = false;
                         Debug.Log("Trigger Queued action");
+                        
                     }
                 }
             }

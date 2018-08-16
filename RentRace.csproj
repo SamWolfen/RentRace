@@ -473,6 +473,7 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
     <Compile Include="Assets\LossCondition.cs" />
+    <Compile Include="Assets\PlayerSprite.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\AStarLoopPathing.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
