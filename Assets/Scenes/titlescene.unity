@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonOption: 5
   TargetButton: {fileID: 1409018361}
-  NextScene: Level1
+  NextScene: tutorial
 --- !u!212 &1409018365
 SpriteRenderer:
   m_ObjectHideFlags: 0
