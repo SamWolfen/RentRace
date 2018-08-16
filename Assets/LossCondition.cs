@@ -8,6 +8,7 @@ public class LossCondition : MonoBehaviour
     public GameObject Player;
     public GameObject LossText;
     public int hits;
+    public int hitLimit;
     public bool lose;
 
     // Use this for initialization
@@ -31,10 +32,21 @@ public class LossCondition : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
 
             //check conditions
-           
+            if (hits == hitLimit)
+            {
+                lose = true;
+            }
 
+
+            if (lose == true)
+            {
+                //trigger win screen and end level
+                LossText.SetActive(true);
+                GetComponent<WinCondition>().Pause(true);
+            }
 
 
 
         }
+    }
 }

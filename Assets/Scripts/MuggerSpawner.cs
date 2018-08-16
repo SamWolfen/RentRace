@@ -56,6 +56,7 @@ public class MuggerSpawner : MonoBehaviour
 
         if (Mugger.GetComponent<Mugger>().isActive)
         {
+            //FOR DIFFERENT SPAWN BEHAVIOR AT DIFFERENT LEVELS!!! 
             switch (difficulty)
             {
                 case DiffLevel.Easy:

@@ -15,6 +15,7 @@ public class WinCondition : MonoBehaviour
         win = false;
         WinText.SetActive(false);
         StartCoroutine(Checker());
+        Time.timeScale = 1;
         
     }
 
@@ -42,12 +43,27 @@ public class WinCondition : MonoBehaviour
             {
                 //trigger win screen and end level
                 WinText.SetActive(true);
+                Pause(true);
 
             }
             
         }
 
 
+    }
+
+    public void Pause(bool pause)
+    {
+        if (pause == true)
+        {
+            Time.timeScale = 0;
+
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        
     }
 
 }

@@ -14,9 +14,11 @@ public class ScoreManagerAndInteraction : MonoBehaviour
     private float Price = 0;
     public float Damage;
 
+    //win/lose
+    public GameObject WinController;
 
 
-
+    //interaction
     private float progressTimer = 0;
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
@@ -110,6 +112,12 @@ public class ScoreManagerAndInteraction : MonoBehaviour
                 {
                     valid = true;
                 }
+                break;
+
+            case "Enemy":
+                WinController.GetComponent<LossCondition>().hits++;
+
+
                 break;
 
         }
