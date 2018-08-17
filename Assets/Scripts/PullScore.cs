@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PullScore : MonoBehaviour {
     public GameObject Player;
+    public GameObject WinController;
     private Text text;
     private ScoreManagerAndInteraction scores;
 
@@ -22,7 +23,7 @@ public class PullScore : MonoBehaviour {
         switch(this.name)
         {
             case "ScoreDisplay":
-                text.text = "Total Money: \n" + scores.Score;
+                text.text = "Total Money:" + scores.Score;
                 break;
 
             case "CashOnHandDisplay":
@@ -31,6 +32,14 @@ public class PullScore : MonoBehaviour {
 
             case "CashInBankDisplay":
                 text.text = "Bank: \n" + scores.Bank;
+                break;
+
+            case "ScoreGoalDisplay":
+                text.text = "Goal: " + WinController.GetComponent<WinCondition>().scoreGoal;
+                break;
+
+            case "LivesDisplay":
+                text.text = "Lives:" + (WinController.GetComponent<LossCondition>().hitLimit - WinController.GetComponent<LossCondition>().hits);
                 break;
 
         }

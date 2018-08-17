@@ -71,19 +71,19 @@ public class MuggerSpawner : MonoBehaviour
 
                     break;
             }
-            
+
 
             if (timer >= spawnCounter * 10 + 15)
             {
                 // Mugger.GetComponent<Mugger>().isActive = false;
                 //ResetValues();
                 timer = 0;
-                
-                
-                
+
+
+
             }
 
-            if (timer > Random.Range(1f, 4f)+1)
+            if (timer > Random.Range(1f, 4f) + 1)
             {
                 if (Mugger2.GetComponent<Mugger>().target == Nodes[nodenum].transform)
                 {
@@ -99,10 +99,10 @@ public class MuggerSpawner : MonoBehaviour
                 nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
                 Debug.Log(nodenum);
 
-                
+
                 Mugger2.GetComponent<Mugger>().target = Nodes[nodenum].transform;
                 timer = 0;
-  
+
             }
 
             else
@@ -115,21 +115,20 @@ public class MuggerSpawner : MonoBehaviour
             if (timer >= 5)
             {
                 Mugger.GetComponent<Mugger>().isActive = true;
-                ResetValues();
+                Mugger2.GetComponent<Mugger>().isActive = true;
                 spawnCounter++;
 
-                switch (difficulty)
-                {
-                    case DiffLevel.Easy:
 
-                        break;
+                ResetValues();
 
-                    case DiffLevel.Medium:
-                        Mugger2.GetComponent<Mugger>().isActive = true;
-                        
+                //messily fix second enemy
+                nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
+                Debug.Log(nodenum);
 
-                        break;
-                }
+
+                Mugger2.GetComponent<Mugger>().target = Nodes[nodenum].transform;
+
+
             }
             else
             {

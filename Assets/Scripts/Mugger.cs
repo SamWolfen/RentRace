@@ -9,12 +9,19 @@ public class Mugger : MonoBehaviour {
     public GameObject Player;
     public GameObject MuggerSpawn;
     public Transform target;
-    
+    enum State
+    {
+        chase,
+        retreat
+    }
+
+    State state;
 
     // Use this for initialization
     void Start () {
         Activate(false);
         target = Player.transform;
+
 	}
 	
 	// Update is called once per frame
