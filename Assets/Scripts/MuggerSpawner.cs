@@ -8,8 +8,11 @@ public class MuggerSpawner : MonoBehaviour
     int spawnCounter = 0;
     public float zeroTimer;
     public GameObject Mugger;
+    public GameObject Mugger2;
     public GameObject TripleZero;
     public GameObject Police;
+    public GameObject[] Nodes;
+    int nodenum;
     float runTimer;
     public float timer;
     float spawnTimer;
@@ -64,18 +67,44 @@ public class MuggerSpawner : MonoBehaviour
                     break;
 
                 case DiffLevel.Medium:
-                    TripleZeroSpawn();
+                    //TripleZeroSpawn();
 
                     break;
             }
-
+            
 
             if (timer >= spawnCounter * 10 + 15)
             {
                 // Mugger.GetComponent<Mugger>().isActive = false;
                 //ResetValues();
-
+                timer = 0;
+                
+                
+                
             }
+
+            if (timer > Random.Range(1f, 4f)+1)
+            {
+                if (Mugger2.GetComponent<Mugger>().target == Nodes[nodenum].transform)
+                {
+                    Mugger2.GetComponent<Mugger>().target = Mugger2.GetComponent<Mugger>().Player.transform;
+                    timer = 0;
+                }
+            }
+
+            if (timer >= 8)
+            {
+                // Mugger.GetComponent<Mugger>().isActive = false;
+                //ResetValues();
+                nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
+                Debug.Log(nodenum);
+
+                
+                Mugger2.GetComponent<Mugger>().target = Nodes[nodenum].transform;
+                timer = 0;
+  
+            }
+
             else
             {
                 timer += Time.deltaTime * 1.0f;
@@ -83,11 +112,24 @@ public class MuggerSpawner : MonoBehaviour
         }
         else
         {
-            if (timer >= rand + 10)
+            if (timer >= 5)
             {
                 Mugger.GetComponent<Mugger>().isActive = true;
                 ResetValues();
                 spawnCounter++;
+
+                switch (difficulty)
+                {
+                    case DiffLevel.Easy:
+
+                        break;
+
+                    case DiffLevel.Medium:
+                        Mugger2.GetComponent<Mugger>().isActive = true;
+                        
+
+                        break;
+                }
             }
             else
             {

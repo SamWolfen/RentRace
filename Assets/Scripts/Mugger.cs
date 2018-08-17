@@ -8,18 +8,26 @@ public class Mugger : MonoBehaviour {
     public bool isActivated;
     public GameObject Player;
     public GameObject MuggerSpawn;
+    public Transform target;
     
 
     // Use this for initialization
     void Start () {
         Activate(false);
+        target = Player.transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (isActive)
         {
-            GetComponent<Pathfinding.AIDestinationSetter>().target = Player.transform;
+            GetComponent<Pathfinding.AIDestinationSetter>().target = target;
+
+            if(target == MuggerSpawn.transform)
+            {
+                target = Player.transform;
+            }
+
 
             if (!isActivated)
             {
@@ -62,4 +70,6 @@ public class Mugger : MonoBehaviour {
 
         }
     }
+
+    
 }

@@ -12820,6 +12820,13 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114479981239937484, guid: 44398d327732fa542ab8f27192d57031,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Congratulations!
+
+        You have saved enough money to purchase your own property!'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44398d327732fa542ab8f27192d57031, type: 2}
   m_IsPrefabAsset: 0
