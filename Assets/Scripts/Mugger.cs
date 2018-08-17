@@ -49,7 +49,14 @@ public class Mugger : MonoBehaviour {
             //deactivate
             Activate(false);
         }
-	}
+
+        if (target == Player.transform)
+        {
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+
+    }
 
 
     //activates and deactivates object. consider this as a start/stop funciton that deals with all the nessicary values as actually deactivating the object is bad practice.

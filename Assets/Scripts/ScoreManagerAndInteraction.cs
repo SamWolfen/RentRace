@@ -22,6 +22,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
     //win/lose
     public GameObject WinController;
     public GameObject MuggerSpawnerObj;
+    public GameObject HitDisplay;
 
 
     //interaction
@@ -124,6 +125,10 @@ public class ScoreManagerAndInteraction : MonoBehaviour
             case "Enemy":
                 WinController.GetComponent<LossCondition>().hits++;
                 collision.gameObject.GetComponent<Mugger>().target = MuggerSpawnerObj.transform;
+                MuggerSpawnerObj.GetComponent<MuggerSpawner>().SendAway();
+                Cash -= 40;
+                HitDisplay.SetActive(true);
+                
 
                 break;
 

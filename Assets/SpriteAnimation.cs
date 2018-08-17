@@ -27,7 +27,7 @@ public class SpriteAnimation : MonoBehaviour {
     public void RefreshSprite()
     {
         frame += Time.deltaTime * rate;
-        if (frame > 3)
+        if (frame > coinFrames.Length-1)
         {
             frame = 0;
         }

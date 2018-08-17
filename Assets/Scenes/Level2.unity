@@ -5663,6 +5663,25 @@ Prefab:
       propertyPath: NextScene
       value: titlescene
       objectReference: {fileID: 0}
+    - target: {fileID: 114288960160514556, guid: 2dd934d3b59aebb4fb081bf901bbd57f,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Oh no!
+
+        The Landlord and Property Manager got you a few too many times!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114818569540522404, guid: 2dd934d3b59aebb4fb081bf901bbd57f,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Congratulations!
+
+        You survived the RentRace!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602048253823206, guid: 2dd934d3b59aebb4fb081bf901bbd57f,
+        type: 2}
+      propertyPath: m_Text
+      value: Back To Menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd934d3b59aebb4fb081bf901bbd57f, type: 2}
   m_IsPrefabAsset: 0
@@ -7450,7 +7469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 403018714}
   WinText: {fileID: 594371214}
-  scoreGoal: 1500
+  scoreGoal: 400
   win: 0
 --- !u!114 &772743692
 MonoBehaviour:
@@ -8543,6 +8562,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4436370830898448, guid: a724932f38b033640a0a4e5ae0280d8b, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a724932f38b033640a0a4e5ae0280d8b, type: 2}
   m_IsPrefabAsset: 0
@@ -8693,29 +8716,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
         type: 2}
-      propertyPath: WinController
-      value: 
-      objectReference: {fileID: 772743689}
-    - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
-        type: 2}
-      propertyPath: PickUpCoinClip
-      value: 
-      objectReference: {fileID: 8300000, guid: c41d7bfcb8b7f634ba6c8bfac94d02d3, type: 3}
-    - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
-        type: 2}
       propertyPath: PickUpCoinSource
       value: 
       objectReference: {fileID: 977339966}
     - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
         type: 2}
+      propertyPath: WinController
+      value: 
+      objectReference: {fileID: 772743689}
+    - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
+        type: 2}
       propertyPath: MuggerSpawnerObj
       value: 
       objectReference: {fileID: 1562896316}
-    - target: {fileID: 114625695575997654, guid: afbe23b2d44b2484ba37cc37c2ff3107,
-        type: 2}
-      propertyPath: Cash
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afbe23b2d44b2484ba37cc37c2ff3107, type: 2}
   m_IsPrefabAsset: 0
@@ -10973,6 +10986,16 @@ Prefab:
       propertyPath: WinController
       value: 
       objectReference: {fileID: 772743689}
+    - target: {fileID: 114197257013116170, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 403018714}
+    - target: {fileID: 114197257013116170, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: WinController
+      value: 
+      objectReference: {fileID: 772743689}
     - target: {fileID: 114918392770337906, guid: 602411a1e96e34f41a31ce964d3f0889,
         type: 2}
       propertyPath: Player
@@ -10983,11 +11006,26 @@ Prefab:
       propertyPath: WinController
       value: 
       objectReference: {fileID: 772743689}
-    - target: {fileID: 114197257013116170, guid: 602411a1e96e34f41a31ce964d3f0889,
+    - target: {fileID: 224570730161615648, guid: 602411a1e96e34f41a31ce964d3f0889,
         type: 2}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 403018714}
+      propertyPath: m_AnchoredPosition.x
+      value: -141.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 224570730161615648, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224570730161615648, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 182.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 224570730161615648, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 28.27
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602411a1e96e34f41a31ce964d3f0889, type: 2}
   m_IsPrefabAsset: 0

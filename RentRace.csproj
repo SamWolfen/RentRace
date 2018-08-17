@@ -499,6 +499,7 @@
     <Compile Include="Assets\Scripts\WinCondition.cs" />
     <Compile Include="Assets\Scripts\ZeroProperties.cs" />
     <Compile Include="Assets\SpriteAnimation.cs" />
+    <Compile Include="Assets\TimedActive.cs" />
     <Compile Include="Assets\ZeroSpawner.cs" />
   </ItemGroup>
   <ItemGroup>

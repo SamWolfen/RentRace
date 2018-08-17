@@ -32,9 +32,10 @@ public class LossCondition : MonoBehaviour
             yield return new WaitForSecondsRealtime(1);
 
             //check conditions
-            if (hits == hitLimit)
+            if (hits >= hitLimit)
             {
                 lose = true;
+                hits = hitLimit;
             }
 
 

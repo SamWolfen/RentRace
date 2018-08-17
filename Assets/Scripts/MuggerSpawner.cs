@@ -83,12 +83,21 @@ public class MuggerSpawner : MonoBehaviour
 
             }
 
-            if (timer > Random.Range(1f, 4f) + 1)
+            if (timer > 3)
             {
                 if (Mugger2.GetComponent<Mugger>().target == Nodes[nodenum].transform)
                 {
                     Mugger2.GetComponent<Mugger>().target = Mugger2.GetComponent<Mugger>().Player.transform;
                     timer = 0;
+                    Mugger.GetComponent<BoxCollider2D>().enabled = true;
+                    
+                }
+
+                if (Mugger.GetComponent<Mugger>().target != Mugger.GetComponent<Mugger>().Player.transform)
+                {
+                    Mugger.GetComponent<Mugger>().target = Mugger.GetComponent<Mugger>().Player.transform;
+                    timer = 0;
+                    Mugger2.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
 
@@ -157,6 +166,21 @@ public class MuggerSpawner : MonoBehaviour
         TripleZero.GetComponent<ZeroSpawner>().ZeroOne.SetActive(false);
         TripleZero.GetComponent<ZeroSpawner>().ZeroTwo.SetActive(false);
         TripleZero.GetComponent<ZeroSpawner>().ZeroThree.SetActive(false);
+
+    }
+
+    public void SendAway()
+    {
+        nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
+        Mugger2.GetComponent<Mugger>().target = Nodes[nodenum].transform;
+        nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
+        Mugger.GetComponent<Mugger>().target = Nodes[nodenum].transform;
+        timer = 0;
+
+        Mugger.GetComponent<BoxCollider2D>().enabled = false;
+        Mugger2.GetComponent<BoxCollider2D>().enabled = false;
+
+
 
     }
 }
