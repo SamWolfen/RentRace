@@ -357,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400, y: 225.0007}
+  m_AnchoredPosition: {x: 400, y: 225.00049}
   m_SizeDelta: {x: 7.4074, y: 4.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65380720
@@ -6604,7 +6604,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.33}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6668,7 +6668,7 @@ SpriteRenderer:
   m_SortingLayerID: 409102129
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d12220de57ce2d4d854591f97a796da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36ed5f5d0439842c1a4f4b270e3d07ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8149,7 +8149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.899902, y: -8.099976}
+  m_AnchoredPosition: {x: 27.90039, y: -8.100098}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881754013
@@ -8479,6 +8479,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 946485534}
     m_Modifications:
+    - target: {fileID: 114826475420745844, guid: a724932f38b033640a0a4e5ae0280d8b,
+        type: 2}
+      propertyPath: coinFrames.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 224304989036892570, guid: a724932f38b033640a0a4e5ae0280d8b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -8577,6 +8582,30 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114826475420745844, guid: a724932f38b033640a0a4e5ae0280d8b,
+        type: 2}
+      propertyPath: coinFrames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d7d35ea77685d4f65bf32d71322f552b,
+        type: 3}
+    - target: {fileID: 114826475420745844, guid: a724932f38b033640a0a4e5ae0280d8b,
+        type: 2}
+      propertyPath: coinFrames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d7e44e96f5ec4d10a8c723d6d5f388e,
+        type: 3}
+    - target: {fileID: 114826475420745844, guid: a724932f38b033640a0a4e5ae0280d8b,
+        type: 2}
+      propertyPath: coinFrames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 48f8520434be44aa79cedb75d9233ad2,
+        type: 3}
+    - target: {fileID: 114826475420745844, guid: a724932f38b033640a0a4e5ae0280d8b,
+        type: 2}
+      propertyPath: coinFrames.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 046e6ca07961d444eb53ec5636e9abe5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a724932f38b033640a0a4e5ae0280d8b, type: 2}
   m_IsPrefabAsset: 0
@@ -10557,7 +10586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 132, y: 115.100006}
+  m_AnchoredPosition: {x: 132, y: 115.1001}
   m_SizeDelta: {x: 2.9, y: 2.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1167168337
@@ -15346,6 +15375,7 @@ GameObject:
   - component: {fileID: 1923126673}
   - component: {fileID: 1923126672}
   - component: {fileID: 1923126671}
+  - component: {fileID: 1923126675}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -15391,7 +15421,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.47
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15420,6 +15450,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923126675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923126670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf607ea31acd34868a0dd23824268ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 451553243}
+  smoothTimeX: 1
+  smoothTimeY: 1
 --- !u!1001 &1933431896
 Prefab:
   m_ObjectHideFlags: 0
