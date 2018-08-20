@@ -4147,6 +4147,7 @@ MonoBehaviour:
   Damage: 0
   WinController: {fileID: 772743689}
   MuggerSpawnerObj: {fileID: 0}
+  HitDisplay: {fileID: 0}
   ProgressBar: {fileID: 1023388902}
   ProgressBarGreen: {fileID: 158211660}
   ProgressBarGrey: {fileID: 1020032177}
@@ -13326,6 +13327,35 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 451553243}
+    - target: {fileID: 114197257013116170, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 451553243}
+    - target: {fileID: 114197257013116170, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: WinController
+      value: 
+      objectReference: {fileID: 772743689}
+    - target: {fileID: 114918392770337906, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: WinController
+      value: 
+      objectReference: {fileID: 772743689}
+    - target: {fileID: 114163538208707680, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: WinController
+      value: 
+      objectReference: {fileID: 772743689}
+    - target: {fileID: 114918392770337906, guid: 602411a1e96e34f41a31ce964d3f0889,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 451553243}
+    - target: {fileID: 1676002012235910, guid: 602411a1e96e34f41a31ce964d3f0889, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602411a1e96e34f41a31ce964d3f0889, type: 2}
   m_IsPrefabAsset: 0

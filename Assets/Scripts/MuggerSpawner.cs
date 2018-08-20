@@ -89,7 +89,7 @@ public class MuggerSpawner : MonoBehaviour
                 {
                     Mugger2.GetComponent<Mugger>().target = Mugger2.GetComponent<Mugger>().Player.transform;
                     timer = 0;
-                    Mugger.GetComponent<BoxCollider2D>().enabled = true;
+                    
                     
                 }
 
@@ -97,7 +97,7 @@ public class MuggerSpawner : MonoBehaviour
                 {
                     Mugger.GetComponent<Mugger>().target = Mugger.GetComponent<Mugger>().Player.transform;
                     timer = 0;
-                    Mugger2.GetComponent<BoxCollider2D>().enabled = true;
+                  
                 }
             }
 
