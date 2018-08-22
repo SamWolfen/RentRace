@@ -11,7 +11,7 @@ public class ZeroSpawner : MonoBehaviour {
     public int spawnCounter;
     float x;
     float y;
-    Vector2 spawnPoint;
+    private Vector2 spawnPoint;
     public bool allZerosCollected;
     public int zerosCollected;
 
@@ -23,6 +23,8 @@ public class ZeroSpawner : MonoBehaviour {
         ZeroTwo.SetActive(false);
         ZeroThree.SetActive(false);
         zerosCollected = 0;
+
+       
     }
 	
 	// Update is called once per frame
@@ -31,6 +33,7 @@ public class ZeroSpawner : MonoBehaviour {
         {
             allZerosCollected = true;
             //call the police
+
         }
 	}
 

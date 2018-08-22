@@ -8,18 +8,33 @@ public class Mugger : MonoBehaviour {
     public bool isActivated;
     public GameObject Player;
     public GameObject MuggerSpawn;
-    
+    public Transform target;
+    enum State
+    {
+        chase,
+        retreat
+    }
+
+    State state;
 
     // Use this for initialization
     void Start () {
         Activate(false);
+        target = Player.transform;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (isActive)
         {
-            GetComponent<Pathfinding.AIDestinationSetter>().target = Player.transform;
+            GetComponent<Pathfinding.AIDestinationSetter>().target = target;
+
+            if(target == MuggerSpawn.transform)
+            {
+                target = Player.transform;
+            }
+
 
             if (!isActivated)
             {
@@ -34,7 +49,14 @@ public class Mugger : MonoBehaviour {
             //deactivate
             Activate(false);
         }
-	}
+
+        if (target == Player.transform)
+        {
+            GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+
+    }
 
 
     //activates and deactivates object. consider this as a start/stop funciton that deals with all the nessicary values as actually deactivating the object is bad practice.
@@ -62,4 +84,6 @@ public class Mugger : MonoBehaviour {
 
         }
     }
+
+    
 }

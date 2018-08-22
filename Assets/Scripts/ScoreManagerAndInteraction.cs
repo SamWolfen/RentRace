@@ -8,15 +8,24 @@ using UnityEngine.UI;
 
 public class ScoreManagerAndInteraction : MonoBehaviour
 {
+    public AudioClip PickUpCoinClip;
+    public AudioSource PickUpCoinSource;
+
+
+
     public float Score = 0;
     public float Cash = 0;
     public float Bank = 0;
     private float Price = 0;
     public float Damage;
 
+    //win/lose
+    public GameObject WinController;
+    public GameObject MuggerSpawnerObj;
+    public GameObject HitDisplay;
 
 
-
+    //interaction
     private float progressTimer = 0;
     public GameObject ProgressBar;
     public GameObject ProgressBarGreen;
@@ -41,6 +50,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         Bank = 0;
 
         StartCoroutine(BankInterest());
+        PickUpCoinSource.clip = PickUpCoinClip;
 
     }
 
@@ -112,6 +122,16 @@ public class ScoreManagerAndInteraction : MonoBehaviour
                 }
                 break;
 
+            case "Enemy":
+                WinController.GetComponent<LossCondition>().hits++;
+                collision.gameObject.GetComponent<Mugger>().target = MuggerSpawnerObj.transform;
+                MuggerSpawnerObj.GetComponent<MuggerSpawner>().SendAway();
+                Cash -= 40;
+                HitDisplay.SetActive(true);
+                
+
+                break;
+
         }
         //carries out building action
         if (collision.tag != "Coin" && valid == true)
@@ -137,6 +157,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
         //increases score
         Cash = Cash + 10;
         Score = Cash + Bank;
+        PickUpCoinSource.Play();
     }
 
     private void Interact(string BuildingType)
