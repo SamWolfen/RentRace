@@ -16,7 +16,7 @@ public class MuggerSpawner : MonoBehaviour
     float runTimer;
     public float timer;
     float spawnTimer;
-    float rand;
+    float rand = 0;
     public bool toggleMugger;
 
     public enum DiffLevel
@@ -59,7 +59,8 @@ public class MuggerSpawner : MonoBehaviour
 
         if (Mugger.GetComponent<Mugger>().isActive)
         {
-            //FOR DIFFERENT SPAWN BEHAVIOR AT DIFFERENT LEVELS!!! 
+            //FOR DIFFERENT SPAWN BEHAVIOR AT DIFFERENT LEVELS!!!
+            //currently does nothing 
             switch (difficulty)
             {
                 case DiffLevel.Easy:

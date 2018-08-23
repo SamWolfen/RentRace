@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpriteAnimation : MonoBehaviour {
     
-    public Sprite[] coinFrames;
+    public Sprite[] Frames;
 
     Sprite CurrentSprite;
     float rate = 5;
@@ -14,7 +14,7 @@ public class SpriteAnimation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = coinFrames[0];
+        GetComponent<SpriteRenderer>().sprite = Frames[0];
         frame = 0;
     }
 
@@ -27,12 +27,12 @@ public class SpriteAnimation : MonoBehaviour {
     public void RefreshSprite()
     {
         frame += Time.deltaTime * rate;
-        if (frame > coinFrames.Length-1)
+        if (frame > Frames.Length-1)
         {
             frame = 0;
         }
         frameInt = Mathf.RoundToInt(frame);
-        CurrentSprite = coinFrames[frameInt];
+        CurrentSprite = Frames[frameInt];
         GetComponent<SpriteRenderer>().sprite = CurrentSprite;
     }
 

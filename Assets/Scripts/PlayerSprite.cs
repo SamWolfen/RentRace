@@ -11,7 +11,7 @@ public class PlayerSprite : MonoBehaviour {
     public Facing facing;
     public  Sprite sprUp, sprDown;
     public Sprite[] sprRight;
-    Sprite[] sprLeft;
+    //Sprite[] sprLeft;
 
 
 
@@ -26,7 +26,7 @@ public class PlayerSprite : MonoBehaviour {
         facing = Facing.Down;
         GetComponent<SpriteRenderer>().sprite = sprDown;
         frame = 0;
-        sprLeft = sprRight;
+        //sprLeft = sprRight;
        
 
     }

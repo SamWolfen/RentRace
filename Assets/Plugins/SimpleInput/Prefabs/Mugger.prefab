@@ -27,9 +27,10 @@ GameObject:
   - component: {fileID: 50000568426686894}
   - component: {fileID: 212874655478562768}
   - component: {fileID: 114003265140800442}
+  - component: {fileID: 114444536031468092}
   m_Layer: 0
   m_Name: Mugger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +84,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.33, y: 0.33}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   isActivated: 0
   Player: {fileID: 0}
   MuggerSpawn: {fileID: 0}
+  target: {fileID: 0}
 --- !u!114 &114331134636417914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +122,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathingBuggy: 0
+--- !u!114 &114444536031468092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387676546304096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d3a047a58b4432ead65e4b42e1e506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Frames:
+  - {fileID: 21300000, guid: 1389f96a42f8f0f42a1912d31d3868e7, type: 3}
+  - {fileID: 21300000, guid: f7dae702d8bb32344ae193edafb10317, type: 3}
+  - {fileID: 21300000, guid: be686e1cef392244eb14bd6e3d464b5b, type: 3}
+  - {fileID: 21300000, guid: 3a40cd1a259d018488f48f8520b78f4d, type: 3}
 --- !u!114 &114705907106674652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +166,7 @@ MonoBehaviour:
   repathRate: Infinity
   canSearch: 1
   canMove: 1
-  speed: 0.5
+  speed: 1
   enableRotation: 0
   rotationIn2D: 0
   rotationSpeed: 30
@@ -216,7 +234,7 @@ SpriteRenderer:
   m_SortingLayerID: 409102129
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9d12220de57ce2d4d854591f97a796da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1389f96a42f8f0f42a1912d31d3868e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

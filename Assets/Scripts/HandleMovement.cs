@@ -140,7 +140,7 @@ public class HandleMovement : MonoBehaviour
 
         if (queuedAction)
         {
-            RaycastHit2D qhit = Physics2D.Linecast(pos, pos + queuedMovement * Time.deltaTime * 10);
+            //RaycastHit2D qhit = Physics2D.Linecast(pos, pos + queuedMovement * Time.deltaTime * 10);
             Debug.DrawRay(pos, queuedMovement * Time.deltaTime * 10);
         }
 
@@ -518,7 +518,6 @@ public class HandleMovement : MonoBehaviour
             canDown = false;
             canLeft = false;
             canRight = false;
-
         }
     }
 
