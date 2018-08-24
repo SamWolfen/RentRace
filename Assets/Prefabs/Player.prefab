@@ -247,13 +247,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facing: 0
-  sprUp: {fileID: 21300000, guid: 5c1b12621608d764190db3a8493e431d, type: 3}
-  sprDown: {fileID: 21300000, guid: a3f325f8171dce4489513cd1f1316e66, type: 3}
   sprRight:
   - {fileID: 21300000, guid: deec13b38b3d3794d8e26396b0f81a69, type: 3}
   - {fileID: 21300000, guid: 2c1f862fc6479e84b91b2c9a473dcd2a, type: 3}
   - {fileID: 21300000, guid: 8605257835e8f824d857a415ccc9ef65, type: 3}
   - {fileID: 21300000, guid: 8a210c78b58a20e45af87a8d81e8c4dc, type: 3}
+  sprUp:
+  - {fileID: 21300000, guid: 80afcefe8eeddf9418569d8132abc859, type: 3}
+  - {fileID: 21300000, guid: 4e92669779dee4a4dae53bd2f9f3f974, type: 3}
+  - {fileID: 21300000, guid: d4e33464dbd3a3649bf410bb3da55ca0, type: 3}
+  - {fileID: 21300000, guid: 555717966e35d3745b1bb23bf6879b93, type: 3}
+  sprDown:
+  - {fileID: 21300000, guid: 99065c355436c814b87db8967d8901a1, type: 3}
+  - {fileID: 21300000, guid: 8ae53924aebaf5d4a8a4ddfcdcf9785a, type: 3}
+  - {fileID: 21300000, guid: 7fe8cc63bbe478744ab2950f69c7afce, type: 3}
+  - {fileID: 21300000, guid: 7716bd88d0a6892488496f16ae3e7c5d, type: 3}
   rate: 5
 --- !u!114 &114096298781097610
 MonoBehaviour:

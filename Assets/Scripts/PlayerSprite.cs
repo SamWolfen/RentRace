@@ -9,8 +9,10 @@ public class PlayerSprite : MonoBehaviour {
     }
 
     public Facing facing;
-    public  Sprite sprUp, sprDown;
+    
     public Sprite[] sprRight;
+    public Sprite[] sprUp;
+    public Sprite[] sprDown;
     //Sprite[] sprLeft;
 
 
@@ -24,7 +26,7 @@ public class PlayerSprite : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         facing = Facing.Down;
-        GetComponent<SpriteRenderer>().sprite = sprDown;
+        GetComponent<SpriteRenderer>().sprite = sprDown[0];
         frame = 0;
         //sprLeft = sprRight;
        
@@ -49,11 +51,11 @@ public class PlayerSprite : MonoBehaviour {
         switch (facing)
         {
             case Facing.Up:
-                CurrentSprite = sprUp;
+                CurrentSprite = sprUp[frameInt];
                 break;
 
             case Facing.Down:
-                CurrentSprite = sprDown;
+                CurrentSprite = sprDown[frameInt];
                 break;
 
             case Facing.Left:
