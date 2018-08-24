@@ -123,6 +123,7 @@ public class ScoreManagerAndInteraction : MonoBehaviour
                 break;
 
             case "Enemy":
+                //what happens when we hit an enemy?
                 WinController.GetComponent<LossCondition>().hits++;
                 collision.gameObject.GetComponent<Mugger>().target = MuggerSpawnerObj.transform;
                 MuggerSpawnerObj.GetComponent<MuggerSpawner>().SendAway();

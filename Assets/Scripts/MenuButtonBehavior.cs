@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public enum ButtonOption
 {
-    Play, Credits, Quit, Highscores, Pause, NextLevel
+    Play, Credits, Quit, Highscores, Pause, NextLevel, CloseWindow
 }
 
 public class MenuButtonBehavior : MonoBehaviour {
@@ -13,6 +13,7 @@ public class MenuButtonBehavior : MonoBehaviour {
     public ButtonOption buttonOption;
     public Button TargetButton;
     public string NextScene;
+    public GameObject Window;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,11 @@ public class MenuButtonBehavior : MonoBehaviour {
 
             case ButtonOption.NextLevel:
                 SceneManager.LoadScene(sceneName: NextScene);
+                break;
+
+            case ButtonOption.CloseWindow:
+                Time.timeScale = 1;
+                Window.SetActive(false);
                 break;
         }
     }

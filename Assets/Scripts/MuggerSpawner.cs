@@ -86,6 +86,8 @@ public class MuggerSpawner : MonoBehaviour
 
             if (timer > 3)
             {
+                //this time period is the cool down between the player bing hit and the enemies resuming pursuit
+
                 if (Mugger2.GetComponent<Mugger>().target == Nodes[nodenum].transform)
                 {
                     Mugger2.GetComponent<Mugger>().target = Mugger2.GetComponent<Mugger>().Player.transform;
@@ -148,7 +150,7 @@ public class MuggerSpawner : MonoBehaviour
     }
 
     void TripleZeroSpawn()
-    {
+    {//leftovers from an initial idea where you could protect your properties be collecting 3 0's and then you become the police (like getting a power pellet in pac man)
         if (zeroTimer < timer)
         {
             zeroTimer += 2;
@@ -159,7 +161,7 @@ public class MuggerSpawner : MonoBehaviour
     }
 
     void ResetValues()
-    {
+    {//resets all the nessicary values
         timer = 0;
         rand = Random.Range(0f, 10f);
         zeroTimer = 3;
@@ -171,7 +173,7 @@ public class MuggerSpawner : MonoBehaviour
     }
 
     public void SendAway()
-    {
+    {//when called, this code causes the enemys to stop pursuing the player
         nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));
         Mugger2.GetComponent<Mugger>().target = Nodes[nodenum].transform;
         nodenum = Mathf.RoundToInt(Random.Range(0f, 3f));

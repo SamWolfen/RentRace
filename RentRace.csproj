@@ -495,6 +495,7 @@
     <Compile Include="Assets\Scripts\ScoreManagerAndInteraction.cs" />
     <Compile Include="Assets\Scripts\SpeechToggle.cs" />
     <Compile Include="Assets\Scripts\SpriteAnimation.cs" />
+    <Compile Include="Assets\Scripts\StopTime.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
     <Compile Include="Assets\Scripts\TimedActive.cs" />
     <Compile Include="Assets\Scripts\TurnOnCircleCollider.cs" />

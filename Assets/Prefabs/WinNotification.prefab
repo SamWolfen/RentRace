@@ -159,6 +159,7 @@ MonoBehaviour:
   buttonOption: 5
   TargetButton: {fileID: 114719894928353854}
   NextScene: Level2
+  Window: {fileID: 0}
 --- !u!114 &114479981239937484
 MonoBehaviour:
   m_ObjectHideFlags: 1
