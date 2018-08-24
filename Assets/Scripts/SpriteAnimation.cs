@@ -7,7 +7,7 @@ public class SpriteAnimation : MonoBehaviour {
     public Sprite[] Frames;
 
     Sprite CurrentSprite;
-    float rate = 5;
+    public float rate;
     float frame;
     int frameInt;
 

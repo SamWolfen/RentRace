@@ -16,7 +16,7 @@ public class SwipeMovement : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             tap = true;
-            Debug.Log("tap happened");
+            //Debug.Log("tap happened");
             startTouch = Input.mousePosition;
             isDragging = true;
         }
@@ -30,7 +30,7 @@ public class SwipeMovement : MonoBehaviour {
         {
             if(Input.touches[0].phase == TouchPhase.Began)
             {
-                Debug.Log("tap happened");
+                //Debug.Log("tap happened");
                 tap = true;
                 isDragging = true;
                 startTouch = Input.touches[0].position;
