@@ -17,7 +17,7 @@ public class PlayerSprite : MonoBehaviour {
 
 
     Sprite CurrentSprite;
-    float rate = 15;
+    public float rate;
     float frame;
     int frameInt;
 
