@@ -58,7 +58,7 @@ public class CoinSpawner : MonoBehaviour
                 case "CoinSpawner":
 
                     x = Random.Range(-4.55f, 4.55f);
-                    y = Random.Range(-4.25f, 4.25f);
+                    y = Random.Range(-4.2f, 4.2f);
 
 
                     spawnPoint = new Vector3(x, y, 7f);

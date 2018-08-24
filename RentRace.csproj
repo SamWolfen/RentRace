@@ -472,13 +472,13 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\RetainedGizmos.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
-    <Compile Include="Assets\LossCondition.cs" />
     <Compile Include="Assets\Scripts\AgentManager.cs" />
     <Compile Include="Assets\Scripts\AStarLoopPathing.cs" />
     <Compile Include="Assets\Scripts\AStarPathingAlgorithm.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CoinSpawner.cs" />
     <Compile Include="Assets\Scripts\HandleMovement.cs" />
+    <Compile Include="Assets\Scripts\LossCondition.cs" />
     <Compile Include="Assets\Scripts\MenuButtonBehavior.cs" />
     <Compile Include="Assets\Scripts\Mugger.cs" />
     <Compile Include="Assets\Scripts\MuggerSpawner.cs" />
